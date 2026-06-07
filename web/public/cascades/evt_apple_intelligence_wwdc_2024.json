@@ -1,0 +1,259 @@
+{
+ "event": {
+  "id": "evt_apple_intelligence_wwdc_2024",
+  "headline": "Apple unveils Apple Intelligence at WWDC; shares hit record high",
+  "regime": "substitution",
+  "scope": "company",
+  "date": "2024-06-11",
+  "category": "demand_surge",
+  "severity": 0.6,
+  "geo": {
+   "lat": 37.33,
+   "lng": -122.03,
+   "zone": "US"
+  },
+  "split": "TRAIN"
+ },
+ "nodes": [
+  {
+   "id": "AAPL",
+   "name": "Apple",
+   "sector": "hardware",
+   "country": "US",
+   "lat": 37.33,
+   "lng": -122.03,
+   "tradable": true,
+   "impact": 0.6,
+   "band": "Severe",
+   "direction": "gain",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "AAPL",
+   "actual": 9.27,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "FOXCONN",
+   "name": "Foxconn (Hon Hai)",
+   "sector": "hardware",
+   "country": "TW",
+   "lat": 25.01,
+   "lng": 121.37,
+   "tradable": true,
+   "impact": 0.1008,
+   "band": "Moderate",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "AAPL —SUP→ FOXCONN",
+   "actual": 4.76,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "XIAOMI",
+   "name": "Xiaomi Corporation",
+   "sector": "hardware",
+   "country": "CN",
+   "lat": 40.04,
+   "lng": 116.28,
+   "tradable": true,
+   "impact": -0.063,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "AAPL —CMP→ XIAOMI",
+   "actual": -0.39,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "STM",
+   "name": "STMicroelectronics N.V.",
+   "sector": "semis",
+   "country": "CH",
+   "lat": 46.18,
+   "lng": 6.1,
+   "tradable": true,
+   "impact": 0.0576,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "AAPL —SUP→ STM",
+   "actual": 0.97,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "TSMC",
+   "name": "TSMC",
+   "sector": "semis",
+   "country": "TW",
+   "lat": 24.77,
+   "lng": 121.01,
+   "tradable": true,
+   "impact": 0.0576,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "AAPL —SUP→ TSMC",
+   "actual": 1.8,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "GS",
+   "name": "Goldman Sachs",
+   "sector": "finance",
+   "country": "US",
+   "lat": 40.71,
+   "lng": -74.01,
+   "tradable": true,
+   "impact": 0.054,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "AAPL —PAR→ GS",
+   "actual": -2.13,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "V",
+   "name": "Visa",
+   "sector": "finance",
+   "country": "US",
+   "lat": 37.55,
+   "lng": -122.27,
+   "tradable": true,
+   "impact": 0.054,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "AAPL —PAR→ V",
+   "actual": -2.78,
+   "actualDir": "loss",
+   "hit": false
+  }
+ ],
+ "links": [
+  {
+   "source": "TSMC",
+   "target": "AAPL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0576,
+   "source_ref": "public"
+  },
+  {
+   "source": "FOXCONN",
+   "target": "AAPL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.7,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.1008,
+   "source_ref": "public"
+  },
+  {
+   "source": "AAPL",
+   "target": "V",
+   "type": "PARTNERS_WITH",
+   "weight": 0.3,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.054,
+   "source_ref": "public"
+  },
+  {
+   "source": "AAPL",
+   "target": "GS",
+   "type": "PARTNERS_WITH",
+   "weight": 0.3,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.054,
+   "source_ref": "public"
+  },
+  {
+   "source": "XIAOMI",
+   "target": "AAPL",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.063,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSMC",
+   "target": "XIAOMI",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.063,
+   "source_ref": "public"
+  },
+  {
+   "source": "STM",
+   "target": "AAPL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0576,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSMC",
+   "target": "STM",
+   "type": "SUPPLIES_TO",
+   "weight": 0.3,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0576,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "AAPL"
+  ],
+  [
+   "FOXCONN",
+   "XIAOMI",
+   "STM",
+   "TSMC",
+   "GS",
+   "V"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "AAPL",
+    "seed": 0.6
+   }
+  ],
+  "reached": 7,
+  "scored": 7
+ }
+}

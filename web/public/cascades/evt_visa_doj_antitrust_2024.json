@@ -1,0 +1,191 @@
+{
+ "event": {
+  "id": "evt_visa_doj_antitrust_2024",
+  "headline": "US DOJ sues Visa over alleged debit-network monopoly",
+  "regime": "substitution",
+  "scope": "company",
+  "date": "2024-09-24",
+  "category": "regulatory",
+  "severity": 0.5,
+  "geo": {
+   "lat": 38.9,
+   "lng": -77.04,
+   "zone": "us_policy"
+  },
+  "split": "TRAIN"
+ },
+ "nodes": [
+  {
+   "id": "V",
+   "name": "Visa",
+   "sector": "finance",
+   "country": "US",
+   "lat": 37.55,
+   "lng": -122.27,
+   "tradable": true,
+   "impact": -0.5,
+   "band": "Severe",
+   "direction": "loss",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "V",
+   "actual": -6.65,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "MA",
+   "name": "Mastercard",
+   "sector": "finance",
+   "country": "US",
+   "lat": 41.04,
+   "lng": -73.71,
+   "tradable": true,
+   "impact": 0.084,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "V —CMP→ MA",
+   "actual": -1.61,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "JPM",
+   "name": "JPMorgan Chase",
+   "sector": "finance",
+   "country": "US",
+   "lat": 40.75,
+   "lng": -73.97,
+   "tradable": true,
+   "impact": -0.06,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "V —PAR→ JPM",
+   "actual": -0.66,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "PYPL",
+   "name": "PayPal",
+   "sector": "finance",
+   "country": "US",
+   "lat": 37.33,
+   "lng": -121.89,
+   "tradable": true,
+   "impact": 0.0525,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "V —CMP→ PYPL",
+   "actual": -0.46,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "AAPL",
+   "name": "Apple",
+   "sector": "hardware",
+   "country": "US",
+   "lat": 37.33,
+   "lng": -122.03,
+   "tradable": true,
+   "impact": -0.045,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "V —PAR→ AAPL",
+   "actual": -0.11,
+   "actualDir": "loss",
+   "hit": true
+  }
+ ],
+ "links": [
+  {
+   "source": "AAPL",
+   "target": "V",
+   "type": "PARTNERS_WITH",
+   "weight": 0.3,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.045,
+   "source_ref": "public"
+  },
+  {
+   "source": "V",
+   "target": "JPM",
+   "type": "PARTNERS_WITH",
+   "weight": 0.4,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.06,
+   "source_ref": "public"
+  },
+  {
+   "source": "V",
+   "target": "MA",
+   "type": "COMPETES_WITH",
+   "weight": 0.8,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.084,
+   "source_ref": "public"
+  },
+  {
+   "source": "V",
+   "target": "PYPL",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0525,
+   "source_ref": "public"
+  },
+  {
+   "source": "MA",
+   "target": "PYPL",
+   "type": "COMPETES_WITH",
+   "weight": 0.45,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0525,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "V"
+  ],
+  [
+   "MA",
+   "JPM",
+   "PYPL",
+   "AAPL"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "V",
+    "seed": -0.5
+   }
+  ],
+  "reached": 5,
+  "scored": 5
+ }
+}

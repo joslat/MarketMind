@@ -1,0 +1,36 @@
+MarketMind
+Copyright (c) 2025-2026 Jose Luis Latorre Millas
+
+This product includes software developed by Jose Luis Latorre Millas.
+
+================================================================================
+Licensing
+================================================================================
+- Code  (src/, web/, cypher/, tools/, *.sln, start.sh) ..................... Apache License 2.0  (see LICENSE)
+- Data  (data/*.json) and prose docs (docs/, *.md) ......................... CC-BY-4.0           (see LICENSE-DATA)
+
+================================================================================
+Data provenance
+================================================================================
+The curated dependency graph in data/*.json is a HAND-CURATED compilation assembled from public sources
+(Wikidata, SEC EDGAR, company filings and investor materials), 2025-2026. It is NOT derived from Diffbot or any
+proprietary knowledge graph. The individual facts are public; the curated *compilation* is the copyrightable work
+licensed here under CC-BY-4.0 — reuse with attribution to "Jose Luis Latorre Millas / MarketMind".
+
+================================================================================
+What is intentionally NOT in this repository
+================================================================================
+- Market-price / abnormal-return data derived from Yahoo Finance (via yfinance) is NOT distributed here
+  (Yahoo Terms of Service prohibit redistribution). The builder script (tools/build_golden_dataset.py) is
+  included so anyone can regenerate that dataset locally from a price source of their choosing; its output is not.
+- Any live-news ingestion, trading strategy, position sizing, or P&L-tuned weights. This repository is the
+  reasoning SUBSTRATE (graph + engine + honest validation harness), not a trading system.
+
+================================================================================
+Third-party components
+================================================================================
+This project depends on third-party open-source packages (NuGet for .NET, npm for the web app, PyPI for the
+Python tools) under their own licenses. See each project's manifest (*.csproj, web/package.json, the tool imports)
+for details.
+
+NOT INVESTMENT ADVICE. See DISCLAIMER.md.

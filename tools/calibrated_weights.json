@@ -1,0 +1,19 @@
+{
+ "fSupDown": 0.6,
+ "fSupUp": 0.4,
+ "fPar": 0.5,
+ "fOwn": 0.55,
+ "fCmp": 0.35,
+ "hopDecay": 0.6,
+ "minImpact": 0.03,
+ "fProd": 0.6,
+ "fCons": 0.6,
+ "fTheme": 0.7,
+ "fCondition": 0.8,
+ "minSeed": 0.05,
+ "chOperations": 1.0,
+ "chDemand": 0.8,
+ "chCurrency": 0.6,
+ "chPolicy": 1.0,
+ "domicileDefault": 0.4
+}

@@ -1,0 +1,26 @@
+MarketMind — Data & Documentation License
+==========================================
+
+The curated dataset (data/*.json) and the prose documentation (docs/ and the Markdown files in this
+repository) are licensed under the
+
+    Creative Commons Attribution 4.0 International License (CC-BY-4.0).
+
+You are free to share and adapt this material for any purpose, even commercially, provided you give
+appropriate credit, link to the license, and indicate if changes were made.
+
+    Attribution:  "Jose Luis Latorre Millas / MarketMind"
+    License text: https://creativecommons.org/licenses/by/4.0/legalcode
+    Summary:      https://creativecommons.org/licenses/by/4.0/
+
+Notes
+-----
+- This license covers the curated *compilation* in data/*.json (the selection, structure, weighting and
+  relationships) and the documentation prose. The underlying individual facts are public and not owned by anyone.
+- Provenance: hand-curated from public sources (Wikidata, SEC EDGAR, company filings & investor materials),
+  2025-2026. Not Diffbot-derived. See NOTICE.
+- The SOURCE CODE (src/, web/, cypher/, tools/, humansetup/) is licensed separately under Apache-2.0 — see LICENSE.
+- Market-price / abnormal-return data derived from Yahoo Finance is NOT included or licensed here (Yahoo ToS).
+  The builder (tools/build_golden_dataset.py) is provided to regenerate it locally.
+
+THIS IS NOT INVESTMENT ADVICE. See DISCLAIMER.md.

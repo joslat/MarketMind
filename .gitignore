@@ -427,3 +427,24 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# ───────────── MarketMind ─────────────
+# Node / web
+node_modules/
+web/node_modules/
+web/dist/
+web/_smoke.mjs
+web/_smoke_*.mjs
+web/public/cascades_dotnet/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Yahoo/yfinance-derived — NEVER publish (Yahoo ToS). The builder ships; its output does not.
+tools/golden.json
+cypher/03-fill-impactrecords.cypher
+data/_review_raw.json
+data/_expansion_raw.json

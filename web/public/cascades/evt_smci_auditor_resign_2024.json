@@ -1,0 +1,393 @@
+{
+ "event": {
+  "id": "evt_smci_auditor_resign_2024",
+  "headline": "Super Micro plunges after auditor Ernst & Young resigns citing inability to rely on management representations",
+  "regime": "substitution",
+  "scope": "company",
+  "date": "2024-10-30",
+  "category": "regulatory",
+  "severity": 0.85,
+  "geo": {
+   "lat": 37.34,
+   "lng": -121.89,
+   "zone": "US"
+  },
+  "split": "TRAIN"
+ },
+ "nodes": [
+  {
+   "id": "SMCI",
+   "name": "Super Micro Computer",
+   "sector": "hardware",
+   "country": "US",
+   "lat": 37.34,
+   "lng": -121.89,
+   "tradable": true,
+   "impact": -0.85,
+   "band": "Severe",
+   "direction": "loss",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "SMCI",
+   "actual": -38.48,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "NVDA",
+   "name": "NVIDIA",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.37,
+   "lng": -121.97,
+   "tradable": true,
+   "impact": -0.1428,
+   "band": "Moderate",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "SMCI —SUP→ NVDA",
+   "actual": -3.75,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "AMD",
+   "name": "AMD",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.37,
+   "lng": -121.97,
+   "tradable": true,
+   "impact": -0.0816,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "SMCI —SUP→ AMD",
+   "actual": -11.08,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "DELL",
+   "name": "Dell Technologies",
+   "sector": "hardware",
+   "country": "US",
+   "lat": 30.51,
+   "lng": -97.69,
+   "tradable": true,
+   "impact": 0.0763,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "SMCI —CMP→ DELL",
+   "actual": 3.9,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "VRT",
+   "name": "Vertiv Holdings",
+   "sector": "energy",
+   "country": "US",
+   "lat": 40.13,
+   "lng": -82.93,
+   "tradable": true,
+   "impact": -0.0714,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "SMCI —SUP→ VRT",
+   "actual": -1.73,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "MSFT",
+   "name": "Microsoft",
+   "sector": "cloud",
+   "country": "US",
+   "lat": 47.64,
+   "lng": -122.13,
+   "tradable": true,
+   "impact": -0.0411,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "SMCI —SUP→ NVDA —SUP→ MSFT",
+   "actual": -3.67,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "AWS",
+   "name": "Amazon Web Services",
+   "sector": "cloud",
+   "country": "US",
+   "lat": 47.62,
+   "lng": -122.34,
+   "tradable": false,
+   "impact": -0.0386,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "SMCI —SUP→ NVDA —SUP→ AWS"
+  },
+  {
+   "id": "GCP",
+   "name": "Google Cloud",
+   "sector": "cloud",
+   "country": "US",
+   "lat": 37.42,
+   "lng": -122.08,
+   "tradable": false,
+   "impact": -0.036,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "SMCI —SUP→ NVDA —SUP→ GCP"
+  },
+  {
+   "id": "TSMC",
+   "name": "TSMC",
+   "sector": "semis",
+   "country": "TW",
+   "lat": 24.77,
+   "lng": 121.01,
+   "tradable": true,
+   "impact": -0.0308,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "SMCI —SUP→ NVDA —SUP→ TSMC",
+   "actual": -0.99,
+   "actualDir": "loss",
+   "hit": true
+  }
+ ],
+ "links": [
+  {
+   "source": "NVDA",
+   "target": "MSFT",
+   "type": "SUPPLIES_TO",
+   "weight": 0.8,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0411,
+   "source_ref": "public"
+  },
+  {
+   "source": "AMD",
+   "target": "MSFT",
+   "type": "SUPPLIES_TO",
+   "weight": 0.35,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0411,
+   "source_ref": "public"
+  },
+  {
+   "source": "NVDA",
+   "target": "AWS",
+   "type": "SUPPLIES_TO",
+   "weight": 0.75,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0386,
+   "source_ref": "public"
+  },
+  {
+   "source": "NVDA",
+   "target": "GCP",
+   "type": "SUPPLIES_TO",
+   "weight": 0.7,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.036,
+   "source_ref": "public"
+  },
+  {
+   "source": "AMD",
+   "target": "AWS",
+   "type": "SUPPLIES_TO",
+   "weight": 0.25,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0386,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSMC",
+   "target": "NVDA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.9,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0308,
+   "source_ref": "10-K:NVDA"
+  },
+  {
+   "source": "TSMC",
+   "target": "AMD",
+   "type": "SUPPLIES_TO",
+   "weight": 0.6,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0308,
+   "source_ref": "10-K:AMD"
+  },
+  {
+   "source": "NVDA",
+   "target": "DELL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.6,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0763,
+   "source_ref": "public"
+  },
+  {
+   "source": "NVDA",
+   "target": "SMCI",
+   "type": "SUPPLIES_TO",
+   "weight": 0.7,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.1428,
+   "source_ref": "public"
+  },
+  {
+   "source": "AMD",
+   "target": "DELL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0763,
+   "source_ref": "public"
+  },
+  {
+   "source": "AMD",
+   "target": "SMCI",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0816,
+   "source_ref": "public"
+  },
+  {
+   "source": "NVDA",
+   "target": "AMD",
+   "type": "COMPETES_WITH",
+   "weight": 0.55,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0816,
+   "source_ref": "public"
+  },
+  {
+   "source": "DELL",
+   "target": "SMCI",
+   "type": "COMPETES_WITH",
+   "weight": 0.6,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0763,
+   "source_ref": "public"
+  },
+  {
+   "source": "AWS",
+   "target": "GCP",
+   "type": "COMPETES_WITH",
+   "weight": 0.6,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.036,
+   "source_ref": "public"
+  },
+  {
+   "source": "VRT",
+   "target": "AWS",
+   "type": "SUPPLIES_TO",
+   "weight": 0.55,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0386,
+   "source_ref": "public"
+  },
+  {
+   "source": "VRT",
+   "target": "GCP",
+   "type": "SUPPLIES_TO",
+   "weight": 0.45,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.036,
+   "source_ref": "public"
+  },
+  {
+   "source": "VRT",
+   "target": "DELL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.35,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0763,
+   "source_ref": "public"
+  },
+  {
+   "source": "VRT",
+   "target": "SMCI",
+   "type": "SUPPLIES_TO",
+   "weight": 0.35,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0714,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "SMCI"
+  ],
+  [
+   "NVDA",
+   "AMD",
+   "DELL",
+   "VRT"
+  ],
+  [
+   "MSFT",
+   "AWS",
+   "GCP",
+   "TSMC"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "SMCI",
+    "seed": -0.85
+   }
+  ],
+  "reached": 9,
+  "scored": 7
+ }
+}

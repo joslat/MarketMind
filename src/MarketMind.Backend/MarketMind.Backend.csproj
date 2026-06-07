@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!--
+    MarketMind.Backend — the IMarketMindBackend abstraction.
+    Two implementations behind one interface:
+      • LocalCypherBackend — the deterministic in-proc CascadeEngine (no DB, no network).
+        This is the "backup demo" path: our own engine answers if the hosted agent misbehaves.
+      • AuraAgentBackend  — calls the hosted Neo4j Aura Agent over HTTPS (OAuth client-credentials).
+        READY but inert until configured (the live connection is a MANUAL walkthrough).
+    Dependency-light on purpose: only the BCL (System.Net.Http + System.Text.Json) + MarketMind.Engine,
+    so it builds and the local path runs with no NuGet restore. The Neo4j.Driver variant of
+    LocalCypherBackend (cypher/02 TOOL 1 over Bolt); add the NuGet when wiring Aura.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\MarketMind.Engine\MarketMind.Engine.csproj" />
+  </ItemGroup>
+
+</Project>

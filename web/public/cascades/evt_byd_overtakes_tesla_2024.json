@@ -1,0 +1,337 @@
+{
+ "event": {
+  "id": "evt_byd_overtakes_tesla_2024",
+  "headline": "BYD overtakes Tesla as the world's top EV seller in Q4",
+  "regime": "contagion",
+  "scope": "company",
+  "date": "2024-01-02",
+  "category": "sector",
+  "severity": 0.6,
+  "geo": {
+   "lat": 22.65,
+   "lng": 114.02,
+   "zone": "CN"
+  },
+  "split": "TRAIN"
+ },
+ "nodes": [
+  {
+   "id": "BYD",
+   "name": "BYD",
+   "sector": "automotive",
+   "country": "CN",
+   "lat": 22.65,
+   "lng": 114.02,
+   "tradable": true,
+   "impact": 0.6,
+   "band": "Severe",
+   "direction": "gain",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "BYD",
+   "actual": 0.58,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "TSLA",
+   "name": "Tesla",
+   "sector": "automotive",
+   "country": "US",
+   "lat": 30.22,
+   "lng": -97.62,
+   "tradable": true,
+   "impact": -0.45,
+   "band": "High",
+   "direction": "loss",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "TSLA",
+   "actual": -2.66,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "STM",
+   "name": "STMicroelectronics N.V.",
+   "sector": "semis",
+   "country": "CH",
+   "lat": 46.18,
+   "lng": 6.1,
+   "tradable": true,
+   "impact": -0.0648,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ STM",
+   "actual": -4.89,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "PANA",
+   "name": "Panasonic",
+   "sector": "automotive",
+   "country": "JP",
+   "lat": 34.74,
+   "lng": 135.58,
+   "tradable": true,
+   "impact": -0.0594,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ PANA",
+   "actual": 3.35,
+   "actualDir": "gain",
+   "hit": false
+  },
+  {
+   "id": "NXPI",
+   "name": "NXP Semiconductors N.V.",
+   "sector": "semis",
+   "country": "NL",
+   "lat": 51.41,
+   "lng": 5.46,
+   "tradable": true,
+   "impact": -0.054,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ NXPI",
+   "actual": -4.55,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "XAI",
+   "name": "xAI",
+   "sector": "ai",
+   "country": "US",
+   "lat": 37.44,
+   "lng": -122.14,
+   "tradable": false,
+   "impact": -0.0473,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —PAR→ XAI"
+  },
+  {
+   "id": "ALB",
+   "name": "Albemarle",
+   "sector": "energy",
+   "country": "US",
+   "lat": 35.23,
+   "lng": -80.84,
+   "tradable": true,
+   "impact": -0.0432,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ ALB",
+   "actual": -1.6,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "LGES",
+   "name": "LG Energy Solution",
+   "sector": "automotive",
+   "country": "KR",
+   "lat": 37.57,
+   "lng": 126.98,
+   "tradable": true,
+   "impact": -0.0432,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ LGES",
+   "actual": -0.88,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "NVDA",
+   "name": "NVIDIA",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.37,
+   "lng": -121.97,
+   "tradable": true,
+   "impact": -0.0378,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ NVDA",
+   "actual": -2.57,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "TXN",
+   "name": "Texas Instruments",
+   "sector": "semis",
+   "country": "US",
+   "lat": 32.75,
+   "lng": -96.75,
+   "tradable": true,
+   "impact": -0.0324,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "TSLA —SUP→ TXN",
+   "actual": -0.81,
+   "actualDir": "loss",
+   "hit": true
+  }
+ ],
+ "links": [
+  {
+   "source": "NVDA",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.35,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0378,
+   "source_ref": "public"
+  },
+  {
+   "source": "TXN",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.3,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0324,
+   "source_ref": "public"
+  },
+  {
+   "source": "PANA",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.55,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0594,
+   "source_ref": "public"
+  },
+  {
+   "source": "XAI",
+   "target": "TSLA",
+   "type": "PARTNERS_WITH",
+   "weight": 0.35,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0473,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSLA",
+   "target": "BYD",
+   "type": "COMPETES_WITH",
+   "weight": 0.7,
+   "sign": 1,
+   "hop": 0,
+   "magnitude": 0.6,
+   "source_ref": "public"
+  },
+  {
+   "source": "STM",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.6,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0648,
+   "source_ref": "public"
+  },
+  {
+   "source": "NXPI",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.5,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.054,
+   "source_ref": "public"
+  },
+  {
+   "source": "LGES",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0432,
+   "source_ref": "public"
+  },
+  {
+   "source": "LGES",
+   "target": "PANA",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0594,
+   "source_ref": "public"
+  },
+  {
+   "source": "ALB",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0432,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "BYD",
+   "TSLA"
+  ],
+  [
+   "STM",
+   "PANA",
+   "NXPI",
+   "XAI",
+   "ALB",
+   "LGES",
+   "NVDA",
+   "TXN"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "BYD",
+    "seed": 0.6
+   },
+   {
+    "ticker": "TSLA",
+    "seed": -0.45
+   }
+  ],
+  "reached": 10,
+  "scored": 9
+ }
+}

@@ -1,0 +1,245 @@
+[
+ {
+  "id": "evt_taiwan_strait_scare_2022",
+  "headline": "China threatens 'strong countermeasures' over imminent Pelosi Taiwan visit; chip stocks and TAIEX slide on Taiwan-Strait conflict fears",
+  "date": "2022-08-01",
+  "regime": "contagion",
+  "scope": "country",
+  "severity": 0.8,
+  "reached": 45
+ },
+ {
+  "id": "evt_chip_controls_tighten_2023",
+  "headline": "US tightens China chip export controls, banning Nvidia A800/H800 and more AI/WFE exports to close 2022-rule loopholes",
+  "date": "2023-10-17",
+  "regime": "contagion",
+  "scope": "policy",
+  "severity": 0.66,
+  "reached": 36
+ },
+ {
+  "id": "evt_byd_overtakes_tesla_2024",
+  "headline": "BYD overtakes Tesla as the world's top EV seller in Q4",
+  "date": "2024-01-02",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.6,
+  "reached": 10
+ },
+ {
+  "id": "evt_nvda_ai_surge_2024",
+  "headline": "NVIDIA posts record datacenter revenue as AI demand surges; shares jump",
+  "date": "2024-02-22",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.8,
+  "reached": 36
+ },
+ {
+  "id": "evt_nvda_gtc_blackwell_2024",
+  "headline": "NVIDIA launches the Blackwell GPU platform at GTC 2024",
+  "date": "2024-03-19",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.25,
+  "reached": 30
+ },
+ {
+  "id": "evt_tesla_q1_miss_2024",
+  "headline": "Tesla Q1 deliveries fall well short of estimates",
+  "date": "2024-04-02",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.6,
+  "reached": 17
+ },
+ {
+  "id": "evt_tsmc_quake_2024",
+  "headline": "Magnitude 7.4 earthquake hits Taiwan; TSMC halts production at multiple fabs",
+  "date": "2024-04-03",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.85,
+  "reached": 44
+ },
+ {
+  "id": "evt_apple_intelligence_wwdc_2024",
+  "headline": "Apple unveils Apple Intelligence at WWDC; shares hit record high",
+  "date": "2024-06-11",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.6,
+  "reached": 7
+ },
+ {
+  "id": "evt_samsung_strike_2024",
+  "headline": "Samsung Electronics union stages first-ever strike",
+  "date": "2024-07-08",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.5,
+  "reached": 18
+ },
+ {
+  "id": "evt_tsmc_earnings_beat_2024",
+  "headline": "TSMC posts record profit on AI chip demand and raises outlook",
+  "date": "2024-07-18",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.7,
+  "reached": 38
+ },
+ {
+  "id": "evt_intel_q2_miss_2024",
+  "headline": "Intel plunges on weak guidance, dividend suspension and layoffs",
+  "date": "2024-08-02",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.7,
+  "reached": 15
+ },
+ {
+  "id": "evt_google_antitrust_2024",
+  "headline": "US judge rules Google illegally monopolized online search",
+  "date": "2024-08-05",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.6,
+  "reached": 7
+ },
+ {
+  "id": "evt_nvda_blackwell_delay_2024",
+  "headline": "Report: NVIDIA's Blackwell AI GPUs delayed by a design flaw",
+  "date": "2024-08-05",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.5,
+  "reached": 26
+ },
+ {
+  "id": "evt_yen_carry_unwind_2024",
+  "headline": "Global risk-off as yen carry trade unwinds after BoJ hike and weak US jobs; Nikkei plunges ~12%, Nasdaq sells off hard",
+  "date": "2024-08-05",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.6,
+  "reached": 33
+ },
+ {
+  "id": "evt_apple_iphone16_demand_2024",
+  "headline": "Apple slides as analysts flag weak early iPhone 16 demand with Apple Intelligence absent at launch",
+  "date": "2024-09-16",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.45,
+  "reached": 7
+ },
+ {
+  "id": "evt_visa_doj_antitrust_2024",
+  "headline": "US DOJ sues Visa over alleged debit-network monopoly",
+  "date": "2024-09-24",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.5,
+  "reached": 5
+ },
+ {
+  "id": "evt_china_stimulus_2024",
+  "headline": "PBOC unveils sweeping monetary stimulus (rate and RRR cuts, property and equity support); Chinese equities and US-listed China names rally",
+  "date": "2024-09-24",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.65,
+  "reached": 9
+ },
+ {
+  "id": "evt_micron_beat_2024",
+  "headline": "Micron jumps on AI-driven memory demand and upbeat guidance",
+  "date": "2024-09-26",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.65,
+  "reached": 13
+ },
+ {
+  "id": "evt_asml_guidance_cut_2024",
+  "headline": "ASML shares plunge after orders miss and outlook cut (early release)",
+  "date": "2024-10-15",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.75,
+  "reached": 17
+ },
+ {
+  "id": "evt_skhynix_record_q3_2024",
+  "headline": "SK hynix posts record Q3 profit on explosive HBM/AI-memory demand; shares jump to a record",
+  "date": "2024-10-24",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.65,
+  "reached": 19
+ },
+ {
+  "id": "evt_smci_auditor_resign_2024",
+  "headline": "Super Micro plunges after auditor Ernst & Young resigns citing inability to rely on management representations",
+  "date": "2024-10-30",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.85,
+  "reached": 9
+ },
+ {
+  "id": "evt_us_election_trump_2024",
+  "headline": "Trump wins 2024 US election; stocks rally on tax/deregulation hopes while tariff and China-trade-war fears hit China-exposed names",
+  "date": "2024-11-06",
+  "regime": "substitution",
+  "scope": "policy",
+  "severity": 0.6,
+  "reached": 25
+ },
+ {
+  "id": "evt_chip_export_curbs_2024",
+  "headline": "US tightens export controls on advanced chips and equipment to China",
+  "date": "2024-12-02",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.55,
+  "reached": 33
+ },
+ {
+  "id": "evt_marvell_ai_beat_2024",
+  "headline": "Marvell beats on AI-driven data-center revenue, raises outlook and expands a multi-year AWS custom-silicon partnership; shares hit a record high",
+  "date": "2024-12-04",
+  "regime": "substitution",
+  "scope": "company",
+  "severity": 0.75,
+  "reached": 6
+ },
+ {
+  "id": "evt_broadcom_ai_beat_2024",
+  "headline": "Broadcom guides to a $60-90B AI chip opportunity by 2027 and signs new custom-AI customers; stock rockets ~24% to a $1T market cap",
+  "date": "2024-12-13",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.85,
+  "reached": 13
+ },
+ {
+  "id": "evt_fed_hawkish_dec_2024",
+  "headline": "Fed cuts but signals fewer 2025 cuts; stocks tumble broadly",
+  "date": "2024-12-18",
+  "regime": "contagion",
+  "scope": "company",
+  "severity": 0.4,
+  "reached": 29
+ },
+ {
+  "id": "evt_deepseek_selloff_2025",
+  "headline": "China's DeepSeek low-cost AI model triggers record tech rout; NVIDIA sheds ~$589B, worst single-day market-cap loss in history",
+  "date": "2025-01-27",
+  "regime": "contagion",
+  "scope": "macro",
+  "severity": 0.56,
+  "reached": 57
+ }
+]

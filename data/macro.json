@@ -1,0 +1,1874 @@
+{
+  "_meta": {
+    "license": "CC-BY-4.0",
+    "provenance": "Hand-curated from public sources (Wikidata, SEC EDGAR, company filings & investor materials), 2025-2026. Not Diffbot-derived; the curated compilation is licensed CC-BY-4.0.",
+    "description": "MarketMind macro/exogenous layer. Seed-only — NOT traversed by the cascade.",
+    "relTypes": [
+      "REVENUE_FROM",
+      "OPERATES_IN",
+      "EXPOSED_TO_POLICY",
+      "PRODUCES",
+      "CONSUMES",
+      "EXPOSED_TO_THEME",
+      "CONSTRAINS"
+    ]
+  },
+  "countries": [
+    {
+      "code": "US",
+      "name": "United States",
+      "region": "North America",
+      "bloc": "NATO"
+    },
+    {
+      "code": "TW",
+      "name": "Taiwan",
+      "region": "Asia",
+      "bloc": "US-aligned"
+    },
+    {
+      "code": "CN",
+      "name": "China",
+      "region": "Asia",
+      "bloc": "China-bloc"
+    },
+    {
+      "code": "KR",
+      "name": "South Korea",
+      "region": "Asia",
+      "bloc": "US-aligned"
+    },
+    {
+      "code": "JP",
+      "name": "Japan",
+      "region": "Asia",
+      "bloc": "US-aligned"
+    },
+    {
+      "code": "NL",
+      "name": "Netherlands",
+      "region": "Europe",
+      "bloc": "EU"
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "region": "Europe",
+      "bloc": "EU"
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "region": "Europe",
+      "bloc": "EU"
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "region": "Europe",
+      "bloc": "NATO"
+    },
+    {
+      "code": "CH",
+      "name": "Switzerland",
+      "region": "Europe",
+      "bloc": "Neutral"
+    },
+    {
+      "code": "FI",
+      "name": "Finland",
+      "region": "Europe",
+      "bloc": "EU"
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "region": "Europe",
+      "bloc": "EU"
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "region": "North America",
+      "bloc": "NATO"
+    }
+  ],
+  "commodities": [
+    {
+      "id": "NEON",
+      "name": "Neon (semiconductor-grade)",
+      "category": "industrial_gas",
+      "geoConcentration": "Ukraine ~70% of global semiconductor-grade supply (Ingas/Cryoin, Odesa & Mariupol); purified as a steelmaking byproduct, much feedstock historically from Russia/China. China is the other large producer."
+    },
+    {
+      "id": "ELECTRICITY",
+      "name": "Wholesale electricity / power",
+      "category": "energy",
+      "geoConcentration": "Regional/grid-bound (not globally traded); US merchant power concentrated in PJM/ERCOT. Datacenter-driven demand growth is the swing factor."
+    },
+    {
+      "id": "CRUDE",
+      "name": "Crude oil",
+      "category": "energy",
+      "geoConcentration": "Globally traded (Brent/WTI); supply concentrated in OPEC+ (~40% of output), US shale, and Russia."
+    },
+    {
+      "id": "LITHIUM",
+      "name": "Lithium",
+      "category": "battery_metal",
+      "geoConcentration": "Mining: Australia ~50%, Chile + Argentina (lithium triangle) ~25%; refining/processing China ~65-70%."
+    },
+    {
+      "id": "RARE_EARTH",
+      "name": "Rare earth elements (NdPr / magnet)",
+      "category": "critical_mineral",
+      "geoConcentration": "China ~70% of mining and ~85-90% of refining/separation; MP Materials (Mountain Pass) is the main ex-China mine (~15% of global content)."
+    }
+  ],
+  "themes": [
+    {
+      "id": "AI-capex",
+      "name": "AI Datacenter Capex",
+      "kind": "narrative",
+      "description": "The hyperscaler/sovereign AI infrastructure build-out thesis. Names move on the expectation of sustained, rising spend on AI accelerators, custom silicon, networking and full racks. This is the basket that DeepSeek (2025-01-27) re-rated: a cheap-compute shock that questions the capex trajectory hits every member, even those with no direct DeepSeek linkage. Sign +1 means the stock rises when the AI-capex narrative strengthens."
+    },
+    {
+      "id": "HBM-memory",
+      "name": "High-Bandwidth Memory (HBM) Cycle",
+      "kind": "narrative",
+      "description": "The AI-memory super-cycle: HBM (stacked DRAM for AI accelerators) plus the back-end packaging tools (TC bonders, hybrid bonding) that gate HBM supply. A sub-narrative of AI-capex but with its own pricing/supply dynamics (HBM is sold out, ASP-rich, and capacity-constrained), so members can decouple from broad logic. Sign +1: stock rises when HBM demand/pricing tightens."
+    },
+    {
+      "id": "AI-power-demand",
+      "name": "AI Power Demand",
+      "kind": "narrative",
+      "description": "The 'electricity is the bottleneck for AI' thesis: independent power producers (esp. nuclear), grid/transmission build-out, and datacenter electrical/cooling/backup gear all re-rate on expectations that AI datacenters drive a step-change in US power demand. Sign +1: stock rises as the power-demand narrative strengthens. BEAR CASE: this theme is structurally DOWNSTREAM of AI-capex — if AI capex disappoints (a DeepSeek-style efficiency shock, or a hyperscaler capex cut), the power-demand thesis deflates too, so members also carry positive AI-capex loadings and can sell off in an AI de-rating despite no fundamental change in current power load."
+    },
+    {
+      "id": "export-control",
+      "name": "US-China Semiconductor Export Controls",
+      "kind": "style_factor",
+      "description": "Policy-risk factor for the US/allied chip & equipment complex exposed to China-revenue restrictions vs. the Chinese domestic champions that benefit from forced import-substitution. A TIGHTENING of controls is the shock: Western accelerator and WFE (wafer-fab-equipment) makers lose addressable China demand (sign -1), while protected, state-backed Chinese foundries gain share and subsidy (sign +1). Loadings reflect China-revenue / China-orderbook transmission, not operational dependency."
+    },
+    {
+      "id": "China-tech",
+      "name": "China Tech / ADR Basket",
+      "kind": "style_factor",
+      "description": "The China internet + domestic-chip basket beta: US-listed ADRs and HK-listed China-tech names that move together on China macro/regulatory risk-on/risk-off (stimulus, regulatory thaw, delisting/geopolitical headlines). Sign +1: stock rises on a China-tech re-rating (e.g. the Sep-2024 PBOC stimulus rally). Captures common basket factor exposure that no company-to-company edge expresses."
+    },
+    {
+      "id": "EV-transition",
+      "name": "EV Transition",
+      "kind": "narrative",
+      "description": "The global shift to battery-electric vehicles and its battery/materials supply chain. Pure-play EV makers, battery cell manufacturers and lithium producers re-rate on EV demand/penetration expectations, price wars, and subsidy/policy shifts. Sign +1: stock rises as EV-transition momentum strengthens. Note the embedded tension for legacy/diversified OEMs, where an aggressive EV transition is volume-positive but margin-dilutive (lower loading)."
+    },
+    {
+      "id": "AI-drug-discovery",
+      "name": "AI Drug Discovery / TechBio",
+      "kind": "narrative",
+      "description": "The 'AI applied to biology' thesis: computational drug discovery, AI-driven diagnostics/genomics, and platform TechBio names. A small, distinct sub-narrative of the broader AI trade — these stocks catch sentiment from AI-capex risk-on/risk-off but are NOT levered to hyperscaler accelerator spend, so they get a modest AI-capex loading plus a primary loading here rather than fake NVDA-supply edges. Sign +1: rises on AI-in-biology enthusiasm."
+    }
+  ],
+  "conditions": [
+    {
+      "id": "cond_us_china_chip_controls",
+      "kind": "export_control",
+      "status": "active",
+      "startDate": "2022-10-07",
+      "endDate": null,
+      "jurisdiction": "US",
+      "domain": "semiconductors",
+      "severity": 0.7,
+      "description": "US Bureau of Industry and Security (BIS) advanced-computing & semiconductor-manufacturing export controls on China, enacted 2022-10-07. Bans export of leading-edge AI accelerators (A100/H100 class) and advanced wafer-fab equipment (EUV/advanced DUV, advanced etch/deposition/metrology) to Chinese fabs; restricts US-person support. Tightened 2023-10-17 (A800/H800/L40 loophole closure) and again Dec-2024. Hurts US/EU chip and WFE exporters that lose China revenue; helps Chinese domestic foundries (SMIC, Hua Hong) via forced localization / self-sufficiency demand."
+    },
+    {
+      "id": "cond_us_china_tariffs",
+      "kind": "tariff",
+      "status": "active",
+      "startDate": "2018-07-06",
+      "endDate": null,
+      "jurisdiction": "US",
+      "domain": "trade",
+      "severity": 0.4,
+      "description": "US Section 301 tariffs on Chinese imports, first effective 2018-07-06 (List 1, 25%) and progressively broadened; still active. Hurts US firms with China-manufactured hardware or large China import/revenue exposure (Apple supply chain, autos, EV-component imports) and Chinese exporters into the US; a renewed/expanded China-tariff stance under the 2024 Trump win is the policy overhang re-priced by markets."
+    }
+  ],
+  "currencies": [],
+  "exposureEdges": [
+    {
+      "from": "NVDA",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.45,
+      "channel": "demand",
+      "source": "10-K:NVDA",
+      "sign": 1
+    },
+    {
+      "from": "NVDA",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.13,
+      "channel": "demand",
+      "source": "10-K:NVDA",
+      "sign": 1
+    },
+    {
+      "from": "NVDA",
+      "rel": "REVENUE_FROM",
+      "to": "TW",
+      "value": 0.2,
+      "channel": "demand",
+      "source": "10-K:NVDA",
+      "sign": 1
+    },
+    {
+      "from": "NVDA",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.7,
+      "source": "10-K:NVDA"
+    },
+    {
+      "from": "NVDA",
+      "rel": "OPERATES_IN",
+      "to": "TW",
+      "value": 0.1,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.6,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": -0.4,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.65,
+      "channel": "demand",
+      "source": "10-K:TSMC"
+    },
+    {
+      "from": "TSMC",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.1,
+      "channel": "demand",
+      "source": "10-K:TSMC"
+    },
+    {
+      "from": "TSMC",
+      "rel": "OPERATES_IN",
+      "to": "TW",
+      "value": 0.92,
+      "source": "10-K:TSMC"
+    },
+    {
+      "from": "TSMC",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.05,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.25,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.3,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.3,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "rel": "OPERATES_IN",
+      "to": "KR",
+      "value": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.15,
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.15,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "SKH",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.3,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "SKH",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.35,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "SKH",
+      "rel": "OPERATES_IN",
+      "to": "KR",
+      "value": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "SKH",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "SKH",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.2,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "AAPL",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.43,
+      "channel": "demand",
+      "source": "10-K:AAPL"
+    },
+    {
+      "from": "AAPL",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.18,
+      "channel": "demand",
+      "source": "10-K:AAPL"
+    },
+    {
+      "from": "AAPL",
+      "rel": "REVENUE_FROM",
+      "to": "DE",
+      "value": 0.25,
+      "channel": "demand",
+      "source": "10-K:AAPL"
+    },
+    {
+      "from": "AAPL",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "AAPL",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.4,
+      "channel": "demand",
+      "source": "10-K:AMD"
+    },
+    {
+      "from": "AMD",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.15,
+      "channel": "demand",
+      "source": "10-K:AMD"
+    },
+    {
+      "from": "AMD",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "rel": "OPERATES_IN",
+      "to": "TW",
+      "value": 0.1,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.4,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "AVGO",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.4,
+      "channel": "demand",
+      "source": "10-K:AVGO"
+    },
+    {
+      "from": "AVGO",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.2,
+      "channel": "demand",
+      "source": "10-K:AVGO"
+    },
+    {
+      "from": "AVGO",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "AVGO",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.3,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "QCOM",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.46,
+      "channel": "demand",
+      "source": "10-K:QCOM"
+    },
+    {
+      "from": "QCOM",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.05,
+      "channel": "demand",
+      "source": "10-K:QCOM"
+    },
+    {
+      "from": "QCOM",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "QCOM",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.3,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.2,
+      "channel": "demand",
+      "source": "10-K:MU"
+    },
+    {
+      "from": "MU",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.15,
+      "channel": "demand",
+      "source": "10-K:MU"
+    },
+    {
+      "from": "MU",
+      "rel": "REVENUE_FROM",
+      "to": "TW",
+      "value": 0.25,
+      "channel": "demand",
+      "source": "10-K:MU"
+    },
+    {
+      "from": "MU",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "rel": "OPERATES_IN",
+      "to": "TW",
+      "value": 0.15,
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": -0.3,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "ASML",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.29,
+      "channel": "demand",
+      "source": "10-K:ASML"
+    },
+    {
+      "from": "ASML",
+      "rel": "REVENUE_FROM",
+      "to": "TW",
+      "value": 0.2,
+      "channel": "demand",
+      "source": "10-K:ASML"
+    },
+    {
+      "from": "ASML",
+      "rel": "REVENUE_FROM",
+      "to": "KR",
+      "value": 0.18,
+      "channel": "demand",
+      "source": "10-K:ASML"
+    },
+    {
+      "from": "ASML",
+      "rel": "OPERATES_IN",
+      "to": "NL",
+      "value": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "ASML",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.5,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "INTC",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.3,
+      "channel": "demand",
+      "source": "10-K:INTC"
+    },
+    {
+      "from": "INTC",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.27,
+      "channel": "demand",
+      "source": "10-K:INTC"
+    },
+    {
+      "from": "INTC",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "INTC",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.15,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "BABA",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.85,
+      "channel": "demand",
+      "source": "10-K:BABA"
+    },
+    {
+      "from": "BABA",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.9,
+      "source": "public"
+    },
+    {
+      "from": "TENCENT",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.9,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "TENCENT",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.9,
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.8,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.12,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.95,
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": 0.6,
+      "channel": "policy",
+      "source": "public",
+      "sign": 1
+    },
+    {
+      "from": "SMIC",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.3,
+      "channel": "policy",
+      "source": "public",
+      "sign": -1
+    },
+    {
+      "from": "XIAOMI",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.55,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "XIAOMI",
+      "rel": "REVENUE_FROM",
+      "to": "DE",
+      "value": 0.18,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "XIAOMI",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.85,
+      "source": "public"
+    },
+    {
+      "from": "XIAOMI",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": 0.15,
+      "channel": "policy",
+      "source": "public",
+      "sign": 1
+    },
+    {
+      "from": "BIDU",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.92,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "BIDU",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.92,
+      "source": "public"
+    },
+    {
+      "from": "BIDU",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": 0.15,
+      "channel": "policy",
+      "source": "public",
+      "sign": 1
+    },
+    {
+      "from": "TSLA",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.47,
+      "channel": "demand",
+      "source": "10-K:TSLA"
+    },
+    {
+      "from": "TSLA",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.22,
+      "channel": "demand",
+      "source": "10-K:TSLA"
+    },
+    {
+      "from": "TSLA",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "TSLA",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "GM",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.8,
+      "channel": "demand",
+      "source": "10-K:GM"
+    },
+    {
+      "from": "GM",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.75,
+      "source": "public"
+    },
+    {
+      "from": "BYD",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.7,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "BYD",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.9,
+      "source": "public"
+    },
+    {
+      "from": "BYD",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": 0.2,
+      "channel": "policy",
+      "source": "public",
+      "sign": 1
+    },
+    {
+      "from": "NIO",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.9,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "NIO",
+      "rel": "OPERATES_IN",
+      "to": "CN",
+      "value": 0.9,
+      "source": "public"
+    },
+    {
+      "from": "NIO",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "CN",
+      "value": 0.15,
+      "channel": "policy",
+      "source": "public",
+      "sign": 1
+    },
+    {
+      "from": "TM",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.3,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "TM",
+      "rel": "REVENUE_FROM",
+      "to": "JP",
+      "value": 0.35,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "TM",
+      "rel": "OPERATES_IN",
+      "to": "JP",
+      "value": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "V",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.45,
+      "channel": "demand",
+      "source": "10-K:V"
+    },
+    {
+      "from": "V",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "MA",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.32,
+      "channel": "demand",
+      "source": "10-K:MA"
+    },
+    {
+      "from": "MA",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.65,
+      "source": "public"
+    },
+    {
+      "from": "JPM",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.78,
+      "channel": "demand",
+      "source": "10-K:JPM"
+    },
+    {
+      "from": "JPM",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "GS",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.6,
+      "channel": "demand",
+      "source": "10-K:GS"
+    },
+    {
+      "from": "GS",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 1,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 1,
+      "source": "public"
+    },
+    {
+      "from": "CEG",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 1,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "CEG",
+      "rel": "OPERATES_IN",
+      "to": "US",
+      "value": 1,
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.27,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.27,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "rel": "OPERATES_IN",
+      "to": "DE",
+      "value": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.15,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "STM",
+      "rel": "REVENUE_FROM",
+      "to": "CN",
+      "value": 0.3,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "STM",
+      "rel": "REVENUE_FROM",
+      "to": "US",
+      "value": 0.18,
+      "channel": "demand",
+      "source": "public"
+    },
+    {
+      "from": "STM",
+      "rel": "OPERATES_IN",
+      "to": "FR",
+      "value": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "STM",
+      "rel": "EXPOSED_TO_POLICY",
+      "to": "US",
+      "value": -0.15,
+      "channel": "policy",
+      "source": "public"
+    },
+    {
+      "from": "XOM",
+      "rel": "PRODUCES",
+      "to": "CRUDE",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "ExxonMobil is an integrated oil major; upstream earnings track crude prices, so XOM moves strongly same-sign with crude."
+    },
+    {
+      "from": "MP",
+      "rel": "PRODUCES",
+      "to": "RARE_EARTH",
+      "value": 0.9,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "MP Materials is a near-pure-play NdPr/rare-earth producer (Mountain Pass); its equity is highly levered to rare-earth (esp. NdPr) prices."
+    },
+    {
+      "from": "FCX",
+      "rel": "PRODUCES",
+      "to": "RARE_EARTH",
+      "value": 0.1,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "FCX is primarily a copper/gold producer (no commodity in this lite set); only a weak, indirect critical-minerals readthrough. Low weight, flagged as soft."
+    },
+    {
+      "from": "LIN",
+      "rel": "PRODUCES",
+      "to": "NEON",
+      "value": 0.15,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "Linde is a top global industrial-gas major that purifies/sells semiconductor-grade neon, but neon is a tiny fraction of revenue; transmission to LIN stock is small (mostly a pricing-power tailwind during shortages)."
+    },
+    {
+      "from": "AI.PA",
+      "rel": "PRODUCES",
+      "to": "NEON",
+      "value": 0.15,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "Air Liquide is the other major industrial-gas producer of rare gases incl. neon; same as Linde, neon is immaterial to group revenue, so weak same-sign transmission."
+    },
+    {
+      "from": "TSMC",
+      "rel": "CONSUMES",
+      "to": "NEON",
+      "value": 0.35,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Neon is a key DUV excimer-laser lithography gas; a neon spike/shortage is an input-cost and supply-continuity risk for the leading-edge fab. War->neon->chips chain. Opposite-sign (cost up = bad)."
+    },
+    {
+      "from": "SMSN",
+      "rel": "CONSUMES",
+      "to": "NEON",
+      "value": 0.3,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Large memory+logic fab; significant DUV-litho neon consumer. Input-cost/continuity risk on a neon shock."
+    },
+    {
+      "from": "INTC",
+      "rel": "CONSUMES",
+      "to": "NEON",
+      "value": 0.28,
+      "sign": -1,
+      "channel": "operations",
+      "source": "IDM with large DUV-litho footprint; neon-shortage exposure on the cost/continuity side."
+    },
+    {
+      "from": "MU",
+      "rel": "CONSUMES",
+      "to": "NEON",
+      "value": 0.28,
+      "sign": -1,
+      "channel": "operations",
+      "source": "DRAM/NAND fabs run heavy DUV lithography; neon-supply shock is an operational/cost risk."
+    },
+    {
+      "from": "SKH",
+      "rel": "CONSUMES",
+      "to": "NEON",
+      "value": 0.28,
+      "sign": -1,
+      "channel": "operations",
+      "source": "SK hynix memory fabs are major DUV-litho neon consumers; opposite-sign cost/continuity exposure."
+    },
+    {
+      "from": "CEG",
+      "rel": "PRODUCES",
+      "to": "ELECTRICITY",
+      "value": 0.7,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "Constellation is the largest US nuclear/merchant-power generator; earnings and stock are highly levered to wholesale power prices (and datacenter PPA demand). Same-sign."
+    },
+    {
+      "from": "VST",
+      "rel": "PRODUCES",
+      "to": "ELECTRICITY",
+      "value": 0.7,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "Vistra is a merchant power generator (gas/nuclear/solar); equity is a high-beta play on power prices and AI-datacenter demand. Same-sign."
+    },
+    {
+      "from": "NRG",
+      "rel": "PRODUCES",
+      "to": "ELECTRICITY",
+      "value": 0.55,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "NRG is an integrated power/retail generator; levered to power prices but more hedged/retail-buffered than pure merchants, so somewhat lower transmission."
+    },
+    {
+      "from": "MSFT",
+      "rel": "CONSUMES",
+      "to": "ELECTRICITY",
+      "value": 0.08,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Datacenter power is a real and growing cost, but immaterial to MSFT margins today; weak opposite-sign cost transmission (power->datacenter chain). Low weight, honest."
+    },
+    {
+      "from": "META",
+      "rel": "CONSUMES",
+      "to": "ELECTRICITY",
+      "value": 0.1,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Heavy AI-datacenter power consumer; power cost is a growing but still small share of opex. Weak opposite-sign transmission."
+    },
+    {
+      "from": "AWS",
+      "rel": "CONSUMES",
+      "to": "ELECTRICITY",
+      "value": 0.1,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Largest hyperscale datacenter operator; rising power cost is a margin headwind but small vs total. Non-tradable node (propagates to AMZN). Weak opposite-sign."
+    },
+    {
+      "from": "GCP",
+      "rel": "CONSUMES",
+      "to": "ELECTRICITY",
+      "value": 0.1,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Hyperscale datacenter power consumer; weak opposite-sign cost transmission. Non-tradable node (propagates to GOOGL)."
+    },
+    {
+      "from": "TSMC",
+      "rel": "CONSUMES",
+      "to": "ELECTRICITY",
+      "value": 0.12,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Fabs are extremely power-intensive (TSMC is a top single consumer of Taiwan's electricity); power cost/availability is a real but margin-buffered headwind. Weak-to-moderate opposite-sign."
+    },
+    {
+      "from": "F",
+      "rel": "CONSUMES",
+      "to": "CRUDE",
+      "value": 0.2,
+      "sign": -1,
+      "channel": "demand",
+      "source": "High oil/gasoline prices dampen demand for ICE/large trucks (Ford's profit pool) and raise input/logistics costs; opposite-sign demand transmission."
+    },
+    {
+      "from": "GM",
+      "rel": "CONSUMES",
+      "to": "CRUDE",
+      "value": 0.2,
+      "sign": -1,
+      "channel": "demand",
+      "source": "High oil hits demand for GM's ICE truck/SUV mix and raises costs; opposite-sign demand transmission."
+    },
+    {
+      "from": "TM",
+      "rel": "CONSUMES",
+      "to": "CRUDE",
+      "value": 0.12,
+      "sign": -1,
+      "channel": "demand",
+      "source": "Toyota is more hybrid-weighted, so less oil-sensitive than US truck makers, but high oil still pressures volumes/costs. Opposite-sign, smaller."
+    },
+    {
+      "from": "TSLA",
+      "rel": "CONSUMES",
+      "to": "CRUDE",
+      "value": 0.18,
+      "sign": 1,
+      "channel": "demand",
+      "source": "SUBSTITUTION angle: high crude/gasoline prices IMPROVE the relative economics of EVs, a demand tailwind for Tesla. Modeled as CONSUMES with POSITIVE sign (sign-flipped vs a normal consumer) to capture the oil->EV substitution. Explicitly noted."
+    },
+    {
+      "from": "BYD",
+      "rel": "CONSUMES",
+      "to": "CRUDE",
+      "value": 0.15,
+      "sign": 1,
+      "channel": "demand",
+      "source": "Same EV substitution angle: high oil aids EV/PHEV adoption (BYD also sells PHEVs, so slightly weaker pure-EV effect). CONSUMES with POSITIVE sign. Noted."
+    },
+    {
+      "from": "ALB",
+      "rel": "PRODUCES",
+      "to": "LITHIUM",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "commodity",
+      "source": "Albemarle is the largest pure-play lithium producer; equity tracks lithium (spodumene/carbonate) prices very closely. Strong same-sign."
+    },
+    {
+      "from": "CATL",
+      "rel": "CONSUMES",
+      "to": "LITHIUM",
+      "value": 0.25,
+      "sign": -1,
+      "channel": "operations",
+      "source": "World's largest battery maker; lithium is a major cell input cost. Note: CATL passes through cost and benefits from volume, so net stock effect is partly offset, hence moderate opposite-sign weight."
+    },
+    {
+      "from": "LGES",
+      "rel": "CONSUMES",
+      "to": "LITHIUM",
+      "value": 0.25,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Major battery maker; lithium input-cost exposure, partly passed through. Moderate opposite-sign."
+    },
+    {
+      "from": "PANA",
+      "rel": "CONSUMES",
+      "to": "LITHIUM",
+      "value": 0.18,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Battery maker (Tesla supplier) but lithium is a smaller share of diversified Panasonic; opposite-sign, smaller."
+    },
+    {
+      "from": "TSLA",
+      "rel": "CONSUMES",
+      "to": "LITHIUM",
+      "value": 0.15,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Lithium is a battery input cost for Tesla's vehicles/energy storage; high lithium = margin headwind. Opposite-sign, modest (Tesla buys cells/has supply deals)."
+    },
+    {
+      "from": "BYD",
+      "rel": "CONSUMES",
+      "to": "LITHIUM",
+      "value": 0.18,
+      "sign": -1,
+      "channel": "operations",
+      "source": "BYD is vertically integrated (makes its own batteries), so lithium price is a direct input cost. Opposite-sign."
+    },
+    {
+      "from": "F",
+      "rel": "CONSUMES",
+      "to": "RARE_EARTH",
+      "value": 0.08,
+      "sign": -1,
+      "channel": "operations",
+      "source": "NdFeB permanent magnets are used in EV traction motors; a rare-earth squeeze (esp. China export curbs) is a cost/continuity risk. Small share of cost, weak transmission."
+    },
+    {
+      "from": "GM",
+      "rel": "CONSUMES",
+      "to": "RARE_EARTH",
+      "value": 0.08,
+      "sign": -1,
+      "channel": "operations",
+      "source": "EV motor magnets use rare earths (NdPr); rare-earth supply shock is an input/continuity risk. Weak opposite-sign."
+    },
+    {
+      "from": "TSLA",
+      "rel": "CONSUMES",
+      "to": "RARE_EARTH",
+      "value": 0.1,
+      "sign": -1,
+      "channel": "operations",
+      "source": "Permanent-magnet motors use rare earths; supply/price shock is a cost/continuity risk (Tesla has moved to cut rare-earth use, so modest). Opposite-sign."
+    },
+    {
+      "from": "BYD",
+      "rel": "CONSUMES",
+      "to": "RARE_EARTH",
+      "value": 0.1,
+      "sign": -1,
+      "channel": "operations",
+      "source": "EV motor magnets; rare-earth input/continuity exposure (China-sourced, so closer to supply). Opposite-sign."
+    },
+    {
+      "from": "NVDA",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 1,
+      "sign": 1,
+      "channel": "Bellwether of the AI-accelerator capex trade; the stock IS the AI-capex narrative (record $589B 1-day loss on the DeepSeek capex-doubt shock).",
+      "source": "public"
+    },
+    {
+      "from": "AVGO",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.9,
+      "sign": 1,
+      "channel": "Custom AI silicon (XPUs) + AI networking for hyperscalers; guided $60-90B AI TAM. Moves tightly with the capex thesis (-17% on DeepSeek, +24% on its own AI guide).",
+      "source": "public"
+    },
+    {
+      "from": "MRVL",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "Custom AI ASIC / AI-datacenter optics/networking; highest-torque small-cap proxy for hyperscaler silicon spend.",
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.75,
+      "sign": 1,
+      "channel": "Sole leading-edge + CoWoS manufacturer for AI accelerators; AI HPC is the dominant revenue-growth driver, but diversified (mobile/auto) caps the loading below the pure-plays.",
+      "source": "public"
+    },
+    {
+      "from": "SMCI",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "Highest-beta AI server/rack integrator; revenue is almost entirely AI-datacenter systems. (Idiosyncratic accounting overhang adds non-theme volatility.)",
+      "source": "public"
+    },
+    {
+      "from": "DELL",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.55,
+      "sign": 1,
+      "channel": "AI server backlog is the growth/re-rating driver, but a large legacy PC/enterprise base dilutes the AI-capex transmission.",
+      "source": "public"
+    },
+    {
+      "from": "ANET",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.7,
+      "sign": 1,
+      "channel": "AI-datacenter Ethernet networking; revenue concentrated in hyperscalers, so the stock trades on AI back-end-network capex.",
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.6,
+      "sign": 1,
+      "channel": "MI-series AI accelerators are the swing growth story, but a large non-AI CPU/client/embedded base dilutes the pure capex beta.",
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "IPP with nuclear + gas fleet; lead datacenter-power re-rating name (Talen/Constellation-style PPAs), stock moves on AI power-demand headlines.",
+      "source": "public"
+    },
+    {
+      "from": "CEG",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.9,
+      "sign": 1,
+      "channel": "Largest US nuclear fleet; signed datacenter PPAs (incl. Microsoft/Three Mile Island restart). The flagship AI-power-demand stock.",
+      "source": "public"
+    },
+    {
+      "from": "NRG",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.6,
+      "sign": 1,
+      "channel": "Independent power / retail; benefits from the AI load-growth and tight-capacity narrative, but more retail/hedged than the nuclear pure-plays.",
+      "source": "public"
+    },
+    {
+      "from": "GEV",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.75,
+      "sign": 1,
+      "channel": "Gas turbines + grid equipment; order book re-rates on datacenter-driven generation and grid build-out.",
+      "source": "public"
+    },
+    {
+      "from": "ETN",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.65,
+      "sign": 1,
+      "channel": "Electrical power-management gear for datacenters; AI datacenter electrification is the key growth/multiple driver, diluted by a broad industrial base.",
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.8,
+      "sign": 1,
+      "channel": "Datacenter thermal/power (cooling, busbar, UPS); a near-pure AI-datacenter capex+power-density play, high transmission.",
+      "source": "public"
+    },
+    {
+      "from": "PWR",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-power-demand",
+      "value": 0.6,
+      "sign": 1,
+      "channel": "Electrical infrastructure / transmission EPC; benefits from grid build-out for AI load growth, diluted by broad utility/telecom work.",
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.4,
+      "sign": 1,
+      "channel": "BEAR-CASE LINK: power-demand thesis is downstream of AI capex; VST sold off in the DeepSeek capex-doubt shock despite no change to current load.",
+      "source": "public"
+    },
+    {
+      "from": "CEG",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.4,
+      "sign": 1,
+      "channel": "BEAR-CASE LINK: datacenter-PPA re-rating is contingent on the AI build-out continuing; de-rates if AI capex stalls.",
+      "source": "public"
+    },
+    {
+      "from": "GEV",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.35,
+      "sign": 1,
+      "channel": "BEAR-CASE LINK: turbine/grid order-book optimism is tied to sustained AI datacenter spend.",
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.45,
+      "sign": 1,
+      "channel": "BEAR-CASE LINK: datacenter thermal/power demand is a direct function of AI capex; falls with the accelerator trade.",
+      "source": "public"
+    },
+    {
+      "from": "SKH",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "HBM-memory",
+      "value": 0.95,
+      "sign": 1,
+      "channel": "HBM market-share leader and lead supplier to NVIDIA; the purest HBM-cycle stock (record Q3-24 profit on HBM/AI demand).",
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "HBM-memory",
+      "value": 0.7,
+      "sign": 1,
+      "channel": "HBM3E ramp is the re-rating driver, but a large commodity DRAM/NAND base ties it to the broader memory cycle, diluting pure-HBM beta.",
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "HBM-memory",
+      "value": 0.55,
+      "sign": 1,
+      "channel": "HBM upside is real but it is the share-loser/laggard in HBM qualification, and a huge diversified franchise (foundry/handset/display) dilutes transmission.",
+      "source": "public"
+    },
+    {
+      "from": "HANMI",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "HBM-memory",
+      "value": 0.95,
+      "sign": 1,
+      "channel": "Dominant TC-bonder supplier for HBM stacking; a near-pure HBM-capex equipment proxy — stock is one of the highest-beta HBM plays.",
+      "source": "public"
+    },
+    {
+      "from": "BESI",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "HBM-memory",
+      "value": 0.6,
+      "sign": 1,
+      "channel": "Hybrid-bonding leader — the next-gen HBM/advanced-packaging tool optionality drives the multiple; partially diluted by mainstream assembly cyclicality.",
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "export-control",
+      "value": 0.45,
+      "sign": -1,
+      "channel": "Loses high-end China accelerator revenue with each tightening (H20/A800/H800 restrictions); sign -1, but China is a minority of revenue so loading is moderate.",
+      "source": "public"
+    },
+    {
+      "from": "ASML",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "export-control",
+      "value": 0.6,
+      "sign": -1,
+      "channel": "EUV already barred; DUV-to-China curbs and a large recent China backlog mean each tightening is a direct demand headwind. Sign -1.",
+      "source": "public"
+    },
+    {
+      "from": "AMAT",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "export-control",
+      "value": 0.6,
+      "sign": -1,
+      "channel": "High China WFE revenue share; deposition/etch/CMP tools are squarely in the entity-list/curb scope. Sign -1.",
+      "source": "public"
+    },
+    {
+      "from": "LRCX",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "export-control",
+      "value": 0.6,
+      "sign": -1,
+      "channel": "Etch/deposition tools to Chinese fabs heavily curbed; among the most China-WFE-exposed US equipment names. Sign -1.",
+      "source": "public"
+    },
+    {
+      "from": "KLAC",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "export-control",
+      "value": 0.55,
+      "sign": -1,
+      "channel": "Process-control/metrology tools to China restricted; meaningful China revenue share. Sign -1.",
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "export-control",
+      "value": 0.45,
+      "sign": 1,
+      "channel": "Sign +1 (winner): controls entrench it as the protected, state-subsidized domestic foundry champion via forced import-substitution; partly offset by being cut off from leading-edge tools, hence moderate loading.",
+      "source": "public"
+    },
+    {
+      "from": "BABA",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "China-tech",
+      "value": 0.9,
+      "sign": 1,
+      "channel": "Bellwether US-listed China-internet ADR; the lead basket name in China risk-on/off (jumped on Sep-2024 PBOC stimulus).",
+      "source": "public"
+    },
+    {
+      "from": "TENCENT",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "China-tech",
+      "value": 0.9,
+      "sign": 1,
+      "channel": "Largest HK-listed China-tech weight; core of the China-tech basket beta.",
+      "source": "public"
+    },
+    {
+      "from": "BIDU",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "China-tech",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "US-listed China internet/AI ADR; moves with the basket on China macro/regulatory sentiment.",
+      "source": "public"
+    },
+    {
+      "from": "JD",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "China-tech",
+      "value": 0.8,
+      "sign": 1,
+      "channel": "US-listed China e-commerce ADR; high basket co-movement on China risk-on/off.",
+      "source": "public"
+    },
+    {
+      "from": "XIAOMI",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "China-tech",
+      "value": 0.75,
+      "sign": 1,
+      "channel": "HK-listed China consumer-tech; trades with the China-tech basket plus its own EV/hardware idiosyncrasies (slightly diluted).",
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "China-tech",
+      "value": 0.7,
+      "sign": 1,
+      "channel": "HK-listed China domestic-chip champion; rallies with the China-tech / chip-self-sufficiency basket.",
+      "source": "public"
+    },
+    {
+      "from": "TSLA",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "Global pure-play EV bellwether; the stock IS the EV-transition narrative (though increasingly priced on AI/robotaxi optionality too, slightly capping loading).",
+      "source": "public"
+    },
+    {
+      "from": "BYD",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.9,
+      "sign": 1,
+      "channel": "World's top NEV seller; pure-play beneficiary of EV penetration and the EV price war (overtook Tesla on volume).",
+      "source": "public"
+    },
+    {
+      "from": "NIO",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "Chinese pure-play EV startup; high-beta to EV demand/penetration and subsidy sentiment.",
+      "source": "public"
+    },
+    {
+      "from": "GM",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.4,
+      "sign": 1,
+      "channel": "Legacy OEM: EV transition is volume-positive but margin-dilutive and a minority of the franchise, so transmission is partial and ambiguous (lower loading).",
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "World's largest EV battery maker; directly levered to global EV battery demand.",
+      "source": "public"
+    },
+    {
+      "from": "PANA",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.5,
+      "sign": 1,
+      "channel": "Tesla/North-America battery supplier — EV batteries are the growth driver, but a large diversified industrial/appliance base dilutes the EV beta.",
+      "source": "public"
+    },
+    {
+      "from": "ALB",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "EV-transition",
+      "value": 0.75,
+      "sign": 1,
+      "channel": "Largest lithium producer; share price tracks EV-battery demand/lithium-price expectations (sign +1 on the EV-demand axis, though oversupply can invert the lithium-price leg).",
+      "source": "public"
+    },
+    {
+      "from": "RXRX",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-drug-discovery",
+      "value": 0.85,
+      "sign": 1,
+      "channel": "Pure-play AI drug-discovery platform; stock trades on the AI-in-biology thesis and platform/partnership newsflow.",
+      "source": "public"
+    },
+    {
+      "from": "SDGR",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-drug-discovery",
+      "value": 0.8,
+      "sign": 1,
+      "channel": "Computational/physics-based drug-design software + pipeline; core AI-drug-discovery name.",
+      "source": "public"
+    },
+    {
+      "from": "TEM",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-drug-discovery",
+      "value": 0.8,
+      "sign": 1,
+      "channel": "AI-driven precision-medicine diagnostics/data; a flagship TechBio/AI-healthcare stock.",
+      "source": "public"
+    },
+    {
+      "from": "ILMN",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-drug-discovery",
+      "value": 0.3,
+      "sign": 1,
+      "channel": "Genomics-sequencing incumbent; catches AI-in-biology sentiment but is a mature, fundamentals-driven tools company, so low thematic transmission.",
+      "source": "public"
+    },
+    {
+      "from": "RXRX",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.25,
+      "sign": 1,
+      "channel": "Small AI-sentiment beta only: catches AI risk-on/off, NOT hyperscaler accelerator spend (no fake NVDA-supply edge).",
+      "source": "public"
+    },
+    {
+      "from": "SDGR",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.2,
+      "sign": 1,
+      "channel": "Small AI-sentiment beta only; not levered to datacenter capex.",
+      "source": "public"
+    },
+    {
+      "from": "TEM",
+      "rel": "EXPOSED_TO_THEME",
+      "to": "AI-capex",
+      "value": 0.25,
+      "sign": 1,
+      "channel": "Small AI-sentiment beta only; 'AI' label drives some co-movement with the broad AI trade, not capex fundamentals.",
+      "source": "public"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "NVDA",
+      "value": 0.6,
+      "sign": -1,
+      "channel": "policy",
+      "source": "BIS 2022-10-07 rule; CNBC 2023-10-17 (A800/H800 ban); company filings on China revenue at risk"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "AMD",
+      "value": 0.4,
+      "sign": -1,
+      "channel": "policy",
+      "source": "BIS rule names MI/AI accelerators; AMD flagged China datacenter-GPU sales restricted"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "ASML",
+      "value": 0.55,
+      "sign": -1,
+      "channel": "policy",
+      "source": "EUV banned to China; advanced-DUV (NXT:2000i+) restricted under US+NL controls; China was a large bookings share"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "AMAT",
+      "value": 0.5,
+      "sign": -1,
+      "channel": "policy",
+      "source": "BIS WFE controls curb deposition/etch tool exports to advanced Chinese fabs; China a major revenue region"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "LRCX",
+      "value": 0.5,
+      "sign": -1,
+      "channel": "policy",
+      "source": "Lam etch/deposition equipment exports to China curbed; large China revenue exposure"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "KLAC",
+      "value": 0.45,
+      "sign": -1,
+      "channel": "policy",
+      "source": "KLA process-control/metrology tools restricted; US-person support to Chinese fabs limited"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "8035.T",
+      "value": 0.4,
+      "sign": -1,
+      "channel": "policy",
+      "source": "Tokyo Electron WFE exports to China curbed under aligned Japan controls (Jul-2023); large China sales mix"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "SMIC",
+      "value": 0.4,
+      "sign": 1,
+      "channel": "policy",
+      "source": "Reuters/Fortune: SMIC benefits as China customers forced to domestic foundries; self-sufficiency bid offsets tool-access constraint in stock reaction"
+    },
+    {
+      "from": "cond_us_china_chip_controls",
+      "rel": "CONSTRAINS",
+      "to": "HUAHONG",
+      "value": 0.35,
+      "sign": 1,
+      "channel": "policy",
+      "source": "Hua Hong is a mature-node localization beneficiary of forced China self-sufficiency under the controls"
+    },
+    {
+      "from": "cond_us_china_tariffs",
+      "rel": "CONSTRAINS",
+      "to": "AAPL",
+      "value": 0.4,
+      "sign": -1,
+      "channel": "policy",
+      "source": "China-concentrated assembly + China end-market revenue; Section 301 tariff escalation is a recurring overhang"
+    },
+    {
+      "from": "cond_us_china_tariffs",
+      "rel": "CONSTRAINS",
+      "to": "TSLA",
+      "value": 0.3,
+      "sign": -1,
+      "channel": "policy",
+      "source": "Shanghai Gigafactory output + China demand exposed to retaliatory tariffs/trade-war risk"
+    },
+    {
+      "from": "cond_us_china_tariffs",
+      "rel": "CONSTRAINS",
+      "to": "BABA",
+      "value": 0.3,
+      "sign": -1,
+      "channel": "policy",
+      "source": "US-listed China exporter/internet name pressured by US-China trade escalation and tariff-driven China-risk sentiment"
+    }
+  ]
+}

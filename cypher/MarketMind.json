@@ -1,0 +1,122 @@
+{
+  "name": "MarketMind",
+  "description": "A reasoning + exposure engine over a curated company-dependency graph. Given a market news event it returns the ranked winners and losers across suppliers, customers, partners, owners and rivals — each with its explained path and regime — and surfaces the non-obvious names the headline never mentioned. Exposure and an auditable path, not a price prediction.",
+  "system_prompt": "# Identity\nYou are MarketMind, a market-reasoning analyst backed by a curated Neo4j company-dependency knowledge graph.\nCompanies are linked by SUPPLIES_TO, PARTNERS_WITH, OWNS and COMPETES_WITH, plus exposure to countries,\ncommodities, themes and standing conditions (sanctions/export controls). Given a news event you explain WHO is\nin its blast radius and WHY, tracing the path hop by hop and surfacing the non-obvious names the headline never\nmentioned. You are a reasoning + EXPOSURE engine. You are NOT a price predictor and you never claim to be one.\n\n# What you can do (and the tool for each)\n- Resolve a plain-language event description to a specific event id .......... find_event(query)\n- Rank the winners and losers of an event across the graph, with paths ...... impact_cascade(newsId, tradableOnly)\n- Explain why one company is exposed (suppliers/customers/rivals/owners) .... company_dependency_map(ticker)\n- Show how widely an event reaches, by sector .............................. sector_exposure(newsId)\n- Prove it against real market data — the backtest, misses included ........ validate_history(newsId)\n- List the standing sanctions/controls constraining a company ............. active_conditions(ticker)\n- Answer open-ended counting/aggregation questions (last resort) .......... market_qa\n\n# How to answer a news question — follow this loop, calling tools (never guess names or numbers)\n1. RESOLVE THE EVENT. The user usually describes an event in words, not by id. Call find_event(query) FIRST.\n   - Do this for ANY question about a market event or scenario, EVEN IF it sounds hypothetical or future-tense\n     (\"what happens when...\", \"what if...\", \"what would...\"). The graph holds REAL historical events phrased many\n     ways; future-sounding phrasing does NOT make an event hypothetical. Only conclude it isn't covered if\n     find_event returns NOTHING. NEVER refuse with \"I can't predict the future\" without calling find_event first\n     — your no-prediction stance is about PRICE direction (step 6), not about whether you'll analyze an event.\n   - If several events match, list them briefly (headline + date) and continue with the clearest match; if it is\n     genuinely ambiguous (e.g. a 2023 vs a 2024 version), ASK the user which one before continuing.\n   - If the user already gave a newsId, skip to step 2.\n2. CASCADE. Call impact_cascade(newsId, tradableOnly=true) to get the ranked, signed exposure and each path.\n3. EXPLAIN THE PATH. Show the strongest path for the lead names, fading each hop\n   (\"NVDA —SUPPLIES→ TSMC —SUPPLIES→ ...\"). The path is the product — always show it.\n4. CLASSIFY THE REGIME and say why: CONTAGION (sector-wide / macro / policy shock — rivals fall together,\n   competitor-benefit suppressed) vs SUBSTITUTION (a firm-specific stumble — rivals can benefit).\n5. SURFACE THE NON-OBVIOUS NAME — the winner or 3-hop exposure the headline did NOT name (e.g. SMIC GAINING from\n   US chip controls because the same sanction that hurts Western names protects the domestic foundry). This is\n   the whole point of the graph; lead with it when it exists.\n6. BE HONEST ABOUT CONFIDENCE. Exposure and reach are validated; next-day price DIRECTION is only a modest tint\n   that ties a whole-sector baseline out-of-sample on a small sample — say so plainly. If asked \"did this really\n   happen / is this validated\", call validate_history(newsId) and show realized abnormal returns INCLUDING the\n   misses. Never oversell.\n7. DRILL-DOWNS: company_dependency_map, sector_exposure, active_conditions. Use market_qa ONLY for open-ended\n   counts/aggregations no other tool covers — never for cascade/impact/path questions.\n\n# Answer format — the \"Blast Radius\" card\n- One-line verdict: \"<N> companies in range · <CONTAGION|SUBSTITUTION> · <Severe|High|Moderate> at hop <h>\".\n- Top 5 signed exposures, one per line: TICKER  <+/-impact>  (gain/loss).\n- The strongest path for the lead name.\n- The non-obvious surfaced name, called out explicitly.\n- One honest line on confidence (exposure/reach validated; direction is a modest tint).\n- Offer the full animated view in the MarketMind web app.\n\n# Rules\n- Use ONLY companies, tickers, numbers and edges the tools return. NEVER invent edges, tickers or numbers.\n- Ground every claim in a tool result. If a tool returns nothing, say so and stop — do not fabricate.\n- Always close with this exact line:\n  Research & education only — exposure, not prediction. Not investment advice.\n",
+  "is_private": false,
+  "is_mcp_enabled": false,
+  "tools": [
+    {
+      "name": "Natural Language to Cypher Tool",
+      "description": "A general-purpose, free-form Text-to-Cypher tool that converts natural language questions into Cypher queries, executes them, and returns the results. Use this option when no specialized tool (e.g. for aggregation or domain-specific logic) is more appropriate.",
+      "enabled": true,
+      "type": "text2cypher"
+    },
+    {
+      "name": "find_event",
+      "description": "Resolve a free-text description or keywords (e.g. 'US chip export tightening') to the matching news event(s), returning each newsId + headline + date. ALWAYS call this FIRST to get a newsId when the user describes an event in words rather than giving an id — then pass that newsId to impact_cascade / validate_history / sector_exposure.",
+      "enabled": true,
+      "type": "cypherTemplate",
+      "config": {
+        "template": "WITH [w IN split(toLower($query), ' ') WHERE size(w) >= 3] AS words\nMATCH (n:NewsEvent)\nWITH n, words, size([w IN words WHERE toLower(n.headline) CONTAINS w\n                                      OR toLower(coalesce(n.category,'')) CONTAINS w\n                                      OR toLower(n.id) CONTAINS w]) AS hits\nWHERE hits > 0\nRETURN n.id AS newsId, n.headline AS headline, n.date AS date, n.category AS category, hits\nORDER BY hits DESC, n.date DESC\nLIMIT 8",
+        "parameters": [
+          {
+            "name": "query",
+            "data_type": "string",
+            "description": "The user's event description or keywords, e.g. 2023 US chip export controls"
+          }
+        ]
+      }
+    },
+    {
+      "name": "impact_cascade",
+      "description": "THE headline tool. Given a newsId, returns the ranked signed exposure across the dependency graph (winners/losers), each with its strongest path, hop distance, and regime-aware direction. Use for ANY 'what does this event do to the market / who is affected / blast radius' question. tradableOnly=true hides non-tradable conduits.",
+      "enabled": true,
+      "type": "cypherTemplate",
+      "config": {
+        "template": "MATCH (n:NewsEvent {id:$newsId})\nOPTIONAL MATCH (n)-[:AFFECTS]->(hh:Company)\nWITH n, collect(hh.sector) AS secs\nWITH n, (n.category IN ['macro','sector','geopolitical','fx_monetary','commodity_shock','thematic']\n         OR any(x IN secs WHERE size([y IN secs WHERE y = x]) >= 2)) AS contagion\nCALL {\n  WITH n  // direct company hits\n  MATCH (n)-[a:AFFECTS]->(c:Company)\n  RETURN c, a.directImpact * coalesce(a.sign, CASE WHEN n.sentiment < 0 THEN -1 ELSE 1 END) AS seed\n  UNION ALL\n  WITH n  // country: operations / demand / currency / policy\n  MATCH (n)-[hc:HITS_COUNTRY]->(k:Country)<-[ex:OPERATES_IN|REVENUE_FROM|EXPOSED_TO_POLICY]-(c:Company)\n  RETURN c, hc.severity * hc.sign * (CASE type(ex)\n      WHEN 'OPERATES_IN'       THEN coalesce(n.cv_operations,0.0) * ex.value * 1\n      WHEN 'REVENUE_FROM'      THEN coalesce(n.cv_demand,0.0) * ex.value * 0.8\n                                  + coalesce(n.cv_currency,0.0) * ex.value * 0.6\n      WHEN 'EXPOSED_TO_POLICY' THEN coalesce(n.cv_policy,0.0) * ex.value * coalesce(ex.sign,1) * 1 END) AS seed\n  UNION ALL\n  WITH n  // country: domicile-default fallback (in-country names with no curated exposure)\n  MATCH (n)-[hc:HITS_COUNTRY]->(k:Country)<-[:LOCATED_IN]-(c:Company)\n  WHERE NOT (c)-[:OPERATES_IN|REVENUE_FROM|EXPOSED_TO_POLICY]->(k)\n  RETURN c, hc.severity * hc.sign * coalesce(n.cv_demand,0.5) * 0.4 AS seed\n  UNION ALL\n  WITH n  // commodity: producers same sign, consumers opposite\n  MATCH (n)-[ac:AFFECTS_COMMODITY]->(:Commodity)<-[ex:PRODUCES|CONSUMES]-(c:Company)\n  RETURN c, ac.severity * ac.sign * ex.value * (CASE type(ex) WHEN 'PRODUCES' THEN 0.6 ELSE -0.6 END) AS seed\n  UNION ALL\n  WITH n  // theme\n  MATCH (n)-[at:AFFECTS_THEME]->(:Theme)<-[ex:EXPOSED_TO_THEME]-(c:Company)\n  RETURN c, at.severity * at.sign * ex.value * coalesce(ex.sign,1) * 0.7 AS seed\n  UNION ALL\n  WITH n  // condition (ENACTS/TIGHTENS apply as-is; LIFTS inverts)\n  MATCH (n)-[act:ENACTS|TIGHTENS|LIFTS]->(:Condition)-[cn:CONSTRAINS]->(c:Company)\n  RETURN c, (CASE WHEN type(act)='LIFTS' THEN -1 ELSE 1 END) * act.severity * cn.value * coalesce(cn.sign,1) * 0.8 AS seed\n}\nWITH contagion, c AS c0, sum(seed) AS seed0\nWHERE abs(seed0) >= 0.05 OR EXISTS { MATCH (:NewsEvent {id:$newsId})-[:AFFECTS]->(c0) }\nMATCH p = (c0)-[rels:SUPPLIES_TO|PARTNERS_WITH|OWNS|COMPETES_WITH*0..3]-(c:Company)\nWHERE NOT (c = c0 AND size(rels) > 0)\nWITH c, contagion, seed0, size(rels) AS hops, rels, nodes(p) AS ns, [x IN nodes(p) | x.ticker] AS chain\nWITH c, hops, chain,\n     reduce(s = seed0, i IN range(0, size(rels) - 1) |\n        s * (CASE type(rels[i])\n               WHEN 'SUPPLIES_TO'   THEN (CASE WHEN startNode(rels[i]) = ns[i] THEN 0.6 ELSE 0.4 END)\n               WHEN 'PARTNERS_WITH' THEN 0.5\n               WHEN 'OWNS'          THEN 0.55\n               WHEN 'COMPETES_WITH' THEN (CASE WHEN contagion THEN 0.0 ELSE -0.35 END)\n               ELSE 0.4 END)\n          * coalesce(rels[i].criticality, rels[i].strength, (rels[i].pct / 100.0), rels[i].overlap, 0.5)\n          * 0.6\n     ) AS pathImpact\nWHERE abs(pathImpact) >= 0.03\nWITH c, pathImpact, hops, chain ORDER BY abs(pathImpact) DESC\nWITH c, sum(pathImpact) AS impactRaw, min(hops) AS hop, head(collect(chain)) AS topChain\nWITH c, hop, topChain,\n     (CASE WHEN impactRaw > 1 THEN 1.0 WHEN impactRaw < -1 THEN -1.0 ELSE impactRaw END) AS impact\nWHERE $tradableOnly = false OR coalesce(c.tradable, false) = true\nRETURN c.ticker AS ticker, c.name AS name, coalesce(c.tradable, false) AS tradable,\n       round(impact * 1000) / 1000.0 AS impact,\n       (CASE WHEN impact >= 0 THEN 'gain' ELSE 'loss' END) AS direction,\n       hop,\n       reduce(s = '', i IN range(0, size(topChain) - 1) |\n         s + topChain[i] + (CASE WHEN i < size(topChain) - 1 THEN ' → ' ELSE '' END)) AS path\nORDER BY abs(impact) DESC, ticker\nLIMIT 25",
+        "parameters": [
+          {
+            "name": "tradableOnly",
+            "data_type": "boolean",
+            "description": "If true, return only price-tradable companies (hide conduits)\n"
+          },
+          {
+            "name": "newsId",
+            "data_type": "string",
+            "description": "The news event id, e.g. evt_chip_controls_tighten_2023"
+          }
+        ]
+      }
+    },
+    {
+      "name": "company_dependency_map",
+      "description": "A single company's suppliers, customers, competitors, and owners. Use to explain WHY a name is exposed.",
+      "enabled": true,
+      "type": "cypherTemplate",
+      "config": {
+        "template": "MATCH (c:Company {ticker:$ticker})\nOPTIONAL MATCH (c)-[s:SUPPLIES_TO]->(cust:Company)\nOPTIONAL MATCH (sup:Company)-[s2:SUPPLIES_TO]->(c)\nOPTIONAL MATCH (c)-[cmp:COMPETES_WITH]-(peer:Company)\nOPTIONAL MATCH (owner:Company)-[o:OWNS]->(c)\nRETURN c.ticker AS ticker, c.name AS name, c.sector AS sector,\n       collect(DISTINCT {to:cust.ticker,  criticality:s.criticality}) AS supplies_to,\n       collect(DISTINCT {from:sup.ticker, criticality:s2.criticality}) AS supplied_by,\n       collect(DISTINCT {peer:peer.ticker, overlap:cmp.overlap})        AS competes_with,\n       collect(DISTINCT {owner:owner.ticker, pct:o.pct})                AS owned_by",
+        "parameters": [
+          {
+            "name": "ticker",
+            "data_type": "string",
+            "description": "The company ticker, e.g. NVDA"
+          }
+        ]
+      }
+    },
+    {
+      "name": "sector_exposure",
+      "description": "How wide an event reaches, aggregated by sector (companiesReached + a sample). Use for 'how broad is this'.\n",
+      "enabled": true,
+      "type": "cypherTemplate",
+      "config": {
+        "template": "MATCH (n:NewsEvent {id:$newsId})-[:AFFECTS]->(c0:Company)\nMATCH (c0)-[:SUPPLIES_TO|PARTNERS_WITH|OWNS|COMPETES_WITH*0..2]-(c:Company)\nRETURN c.sector AS sector,\n       count(DISTINCT c) AS companiesReached,\n       collect(DISTINCT c.ticker)[0..8] AS sample\nORDER BY companiesReached DESC",
+        "parameters": [
+          {
+            "name": "newsId",
+            "data_type": "string",
+            "description": "The news event id, e.g. evt_deepseek_selloff_2025"
+          }
+        ]
+      }
+    },
+    {
+      "name": "validate_history",
+      "description": "The honest backtest: realized abnormal returns per company for an event (ground truth). Use when asked 'did this actually happen / how did it really move / is this validated'.\n",
+      "enabled": true,
+      "type": "cypherTemplate",
+      "config": {
+        "template": "MATCH (n:NewsEvent {id:$newsId})-[:HAS_RECORD]->(ir:ImpactRecord)-[:FOR_COMPANY]->(c:Company)\nRETURN c.ticker AS ticker, c.name AS name,\n       ir.abnormalReturnPct AS actualAbnormalReturnPct,\n       ir.window AS window, ir.filled AS filled\nORDER BY abs(coalesce(ir.abnormalReturnPct,0)) DESC",
+        "parameters": [
+          {
+            "name": "newsId",
+            "data_type": "string",
+            "description": "The news event id, e.g. evt_chip_controls_tighten_2023"
+          }
+        ]
+      }
+    },
+    {
+      "name": "active_conditions",
+      "description": "The standing sanctions / export controls currently constraining a company. Use for 'what rules affect X'.\n",
+      "enabled": true,
+      "type": "cypherTemplate",
+      "config": {
+        "template": "MATCH (d:Condition {status:'active'})-[cn:CONSTRAINS]->(c:Company {ticker:$ticker})\nRETURN d.id AS condition, d.kind AS kind, d.startDate AS since,\n       cn.sign AS effectSign, cn.value AS severity, d.description AS description\nORDER BY abs(cn.value) DESC",
+        "parameters": [
+          {
+            "name": "ticker",
+            "data_type": "string",
+            "description": "The company ticker, e.g. SMIC\n"
+          }
+        ]
+      }
+    },
+    {
+      "name": "market_qa",
+      "description": "Open-ended graph questions (counts/aggregations) that no other tool covers. Use ONLY when none of the structured tools fit; never for cascade/impact/path questions.\n\nInstructions:\nCompany-to-company influence may ONLY traverse SUPPLIES_TO, PARTNERS_WITH, OWNS, COMPETES_WITH.\nNEVER traverse exposure/context edges (LOCATED_IN, IN_SECTOR, REVENUE_FROM, OPERATES_IN, EXPOSED_TO_POLICY, PRODUCES, CONSUMES, EXPOSED_TO_THEME, CONSTRAINS) between two Company nodes.\nFor any cascade / impact / path question, do NOT answer here — defer to impact_cascade.\nGood uses: counts/aggregations only, e.g. \"how many companies have REVENUE_FROM China?\". Read-only only.",
+      "enabled": true,
+      "type": "text2cypher"
+    }
+  ]
+}

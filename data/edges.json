@@ -1,0 +1,1844 @@
+{
+  "_meta": {
+    "license": "CC-BY-4.0",
+    "provenance": "Hand-curated from public sources (Wikidata, SEC EDGAR, company filings & investor materials), 2025-2026. Not Diffbot-derived; the curated compilation is licensed CC-BY-4.0.",
+    "description": "MarketMind dependency edges — single source of truth (P1, §6.3). Edit here, then run tools/gen_seed.py. Traversed UNDIRECTED by the cascade; COMPETES_WITH is the sign-flipping channel.",
+    "types": {
+      "SUPPLIES_TO": {
+        "property": "criticality",
+        "range": [
+          0,
+          1
+        ],
+        "heuristic": "sole-source .8-.9, major .5-.7, minor .2-.4"
+      },
+      "PARTNERS_WITH": {
+        "property": "strength",
+        "range": [
+          0,
+          1
+        ],
+        "heuristic": "deep .8, normal .5, loose .3"
+      },
+      "OWNS": {
+        "property": "pct",
+        "range": [
+          0,
+          100
+        ],
+        "heuristic": "ownership percent"
+      },
+      "COMPETES_WITH": {
+        "property": "overlap",
+        "range": [
+          0,
+          1
+        ],
+        "heuristic": "head-to-head .7, partial .5, adjacent .3"
+      }
+    },
+    "source": "one of: 'public' (curated public knowledge), '10-K:<ticker>' (SEC filing), 'wikidata:<qid>'",
+    "note": "COMPETES_WITH stored once per unordered pair (no reverse duplicates); the engine walks it both ways."
+  },
+  "edges": [
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.75,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "GCP",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "META",
+      "weight": 0.55,
+      "source": "10-K:META"
+    },
+    {
+      "from": "AMD",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "INTC",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "AVGO",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "AVGO",
+      "type": "SUPPLIES_TO",
+      "to": "GCP",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "AWS",
+      "type": "SUPPLIES_TO",
+      "to": "ANTHROPIC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "GCP",
+      "type": "SUPPLIES_TO",
+      "to": "COHERE",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AWS",
+      "type": "SUPPLIES_TO",
+      "to": "PPLX",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "SUPPLIES_TO",
+      "to": "PPLX",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "SUPPLIES_TO",
+      "to": "OPENAI",
+      "weight": 0.75,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.9,
+      "source": "10-K:NVDA"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "AMD",
+      "weight": 0.6,
+      "source": "10-K:AMD"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "AAPL",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "QCOM",
+      "weight": 0.5,
+      "source": "10-K:QCOM"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "AVGO",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "MRVL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ASML",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "ASML",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "ASML",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "LRCX",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.6,
+      "source": "10-K:LRCX"
+    },
+    {
+      "from": "AMAT",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.6,
+      "source": "10-K:AMAT"
+    },
+    {
+      "from": "AMAT",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.5,
+      "source": "10-K:AMAT"
+    },
+    {
+      "from": "LRCX",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "10-K:LRCX"
+    },
+    {
+      "from": "SKH",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "ARM",
+      "type": "SUPPLIES_TO",
+      "to": "AAPL",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "ARM",
+      "type": "SUPPLIES_TO",
+      "to": "QCOM",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "type": "SUPPLIES_TO",
+      "to": "AAPL",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "FOXCONN",
+      "type": "SUPPLIES_TO",
+      "to": "AAPL",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "TXN",
+      "type": "SUPPLIES_TO",
+      "to": "AAPL",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "DELL",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "SMCI",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "type": "SUPPLIES_TO",
+      "to": "DELL",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "INTC",
+      "type": "SUPPLIES_TO",
+      "to": "DELL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "type": "SUPPLIES_TO",
+      "to": "SMCI",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "AVGO",
+      "type": "SUPPLIES_TO",
+      "to": "CSCO",
+      "weight": 0.5,
+      "source": "10-K:CSCO"
+    },
+    {
+      "from": "AVGO",
+      "type": "SUPPLIES_TO",
+      "to": "ANET",
+      "weight": 0.6,
+      "source": "10-K:ANET"
+    },
+    {
+      "from": "MRVL",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "ANET",
+      "type": "SUPPLIES_TO",
+      "to": "META",
+      "weight": 0.5,
+      "source": "10-K:ANET"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "TXN",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "QCOM",
+      "type": "SUPPLIES_TO",
+      "to": "GM",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.65,
+      "source": "public"
+    },
+    {
+      "from": "PANA",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "type": "SUPPLIES_TO",
+      "to": "BYD",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "WDC",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "STX",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "WDC",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "AWS",
+      "type": "SUPPLIES_TO",
+      "to": "NFLX",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "AWS",
+      "type": "SUPPLIES_TO",
+      "to": "JPM",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "SUPPLIES_TO",
+      "to": "GS",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "PARTNERS_WITH",
+      "to": "OPENAI",
+      "weight": 0.85,
+      "source": "public"
+    },
+    {
+      "from": "AWS",
+      "type": "PARTNERS_WITH",
+      "to": "ANTHROPIC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "GCP",
+      "type": "PARTNERS_WITH",
+      "to": "COHERE",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "XAI",
+      "type": "PARTNERS_WITH",
+      "to": "TSLA",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "AAPL",
+      "type": "PARTNERS_WITH",
+      "to": "V",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "AAPL",
+      "type": "PARTNERS_WITH",
+      "to": "GS",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "V",
+      "type": "PARTNERS_WITH",
+      "to": "JPM",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "AMZN",
+      "type": "OWNS",
+      "to": "AWS",
+      "weight": 100.0,
+      "source": "public"
+    },
+    {
+      "from": "GOOGL",
+      "type": "OWNS",
+      "to": "GCP",
+      "weight": 100.0,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "OWNS",
+      "to": "GITHUB",
+      "weight": 100.0,
+      "source": "wikidata:Q364"
+    },
+    {
+      "from": "NVDA",
+      "type": "COMPETES_WITH",
+      "to": "AMD",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "COMPETES_WITH",
+      "to": "INTC",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "AMD",
+      "type": "COMPETES_WITH",
+      "to": "INTC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "COMPETES_WITH",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "COMPETES_WITH",
+      "to": "INTC",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "SMSN",
+      "type": "COMPETES_WITH",
+      "to": "INTC",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "AAPL",
+      "type": "COMPETES_WITH",
+      "to": "SMSN",
+      "weight": 0.65,
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "type": "COMPETES_WITH",
+      "to": "SMSN",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "MU",
+      "type": "COMPETES_WITH",
+      "to": "SKH",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "WDC",
+      "type": "COMPETES_WITH",
+      "to": "STX",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "LRCX",
+      "type": "COMPETES_WITH",
+      "to": "AMAT",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "MRVL",
+      "type": "COMPETES_WITH",
+      "to": "AVGO",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "TXN",
+      "type": "COMPETES_WITH",
+      "to": "QCOM",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "CSCO",
+      "type": "COMPETES_WITH",
+      "to": "ANET",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "DELL",
+      "type": "COMPETES_WITH",
+      "to": "SMCI",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "TSLA",
+      "type": "COMPETES_WITH",
+      "to": "BYD",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "GM",
+      "type": "COMPETES_WITH",
+      "to": "TSLA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AWS",
+      "type": "COMPETES_WITH",
+      "to": "GCP",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "ORCL",
+      "type": "COMPETES_WITH",
+      "to": "AWS",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "IBM",
+      "type": "COMPETES_WITH",
+      "to": "ORCL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "IBM",
+      "type": "COMPETES_WITH",
+      "to": "MSFT",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "OPENAI",
+      "type": "COMPETES_WITH",
+      "to": "ANTHROPIC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "COMPETES_WITH",
+      "to": "GOOGL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "COMPETES_WITH",
+      "to": "AMZN",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "BABA",
+      "type": "COMPETES_WITH",
+      "to": "AMZN",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "V",
+      "type": "COMPETES_WITH",
+      "to": "MA",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "V",
+      "type": "COMPETES_WITH",
+      "to": "PYPL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "MA",
+      "type": "COMPETES_WITH",
+      "to": "PYPL",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "JPM",
+      "type": "COMPETES_WITH",
+      "to": "GS",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "4063.T",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "4063.T",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "4063.T",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "3436.T",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "3436.T",
+      "type": "SUPPLIES_TO",
+      "to": "MU",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "3436.T",
+      "type": "SUPPLIES_TO",
+      "to": "SKH",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "3436.T",
+      "type": "COMPETES_WITH",
+      "to": "4063.T",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "ENTG",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "ENTG",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ENTG",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LIN",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "LIN",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "LIN",
+      "type": "SUPPLIES_TO",
+      "to": "MU",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AI.PA",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "AI.PA",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AI.PA",
+      "type": "COMPETES_WITH",
+      "to": "LIN",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "PARTNERS_WITH",
+      "to": "ASML",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "COMPETES_WITH",
+      "to": "LRCX",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "COMPETES_WITH",
+      "to": "AMAT",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "KLAC",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "KLAC",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "KLAC",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "KLAC",
+      "type": "COMPETES_WITH",
+      "to": "AMAT",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "6857.T",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "6857.T",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "6857.T",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "6920.T",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "6920.T",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "6920.T",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "6920.T",
+      "type": "PARTNERS_WITH",
+      "to": "ASML",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ASM.AS",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "ASM.AS",
+      "type": "SUPPLIES_TO",
+      "to": "INTC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "ASM.AS",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ASM.AS",
+      "type": "COMPETES_WITH",
+      "to": "AMAT",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "SNPS",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "SNPS",
+      "type": "SUPPLIES_TO",
+      "to": "AMD",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "SNPS",
+      "type": "SUPPLIES_TO",
+      "to": "QCOM",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "SNPS",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "SNPS",
+      "type": "SUPPLIES_TO",
+      "to": "ARM",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "CDNS",
+      "type": "SUPPLIES_TO",
+      "to": "NVDA",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "CDNS",
+      "type": "SUPPLIES_TO",
+      "to": "AMD",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "CDNS",
+      "type": "SUPPLIES_TO",
+      "to": "MRVL",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "CDNS",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "CDNS",
+      "type": "COMPETES_WITH",
+      "to": "SNPS",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "SMIC",
+      "type": "COMPETES_WITH",
+      "to": "TSMC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AMAT",
+      "type": "SUPPLIES_TO",
+      "to": "SMIC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LRCX",
+      "type": "SUPPLIES_TO",
+      "to": "SMIC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "HUAHONG",
+      "type": "COMPETES_WITH",
+      "to": "SMIC",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "AMAT",
+      "type": "SUPPLIES_TO",
+      "to": "HUAHONG",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "TENCENT",
+      "type": "COMPETES_WITH",
+      "to": "AWS",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "TENCENT",
+      "type": "COMPETES_WITH",
+      "to": "BABA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "TENCENT",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "BIDU",
+      "type": "COMPETES_WITH",
+      "to": "GOOGL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "BIDU",
+      "type": "COMPETES_WITH",
+      "to": "OPENAI",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "BIDU",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "XIAOMI",
+      "type": "COMPETES_WITH",
+      "to": "AAPL",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "XIAOMI",
+      "type": "COMPETES_WITH",
+      "to": "SMSN",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "QCOM",
+      "type": "SUPPLIES_TO",
+      "to": "XIAOMI",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "XIAOMI",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "JD",
+      "type": "COMPETES_WITH",
+      "to": "BABA",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "TENCENT",
+      "type": "OWNS",
+      "to": "JD",
+      "weight": 2.0,
+      "source": "public"
+    },
+    {
+      "from": "NAVER",
+      "type": "COMPETES_WITH",
+      "to": "GOOGL",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "KIOXIA",
+      "type": "COMPETES_WITH",
+      "to": "SMSN",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "KIOXIA",
+      "type": "COMPETES_WITH",
+      "to": "MU",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "KIOXIA",
+      "type": "COMPETES_WITH",
+      "to": "SKH",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "KIOXIA",
+      "type": "PARTNERS_WITH",
+      "to": "WDC",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "type": "SUPPLIES_TO",
+      "to": "GM",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "IFX.DE",
+      "type": "SUPPLIES_TO",
+      "to": "BYD",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "IFX.DE",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "STM",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "STM",
+      "type": "SUPPLIES_TO",
+      "to": "AAPL",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "STM",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "NXPI",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "NXPI",
+      "type": "SUPPLIES_TO",
+      "to": "GM",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TSMC",
+      "type": "SUPPLIES_TO",
+      "to": "NXPI",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "SAP",
+      "type": "COMPETES_WITH",
+      "to": "ORCL",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "SAP",
+      "type": "COMPETES_WITH",
+      "to": "MSFT",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "SAP",
+      "type": "PARTNERS_WITH",
+      "to": "AWS",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "SU.PA",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "SU.PA",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "SU.PA",
+      "type": "SUPPLIES_TO",
+      "to": "GCP",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "SU.PA",
+      "type": "SUPPLIES_TO",
+      "to": "META",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "SIE.DE",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "SIE.DE",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.2,
+      "source": "public"
+    },
+    {
+      "from": "SIE.DE",
+      "type": "PARTNERS_WITH",
+      "to": "NVDA",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "NOK",
+      "type": "COMPETES_WITH",
+      "to": "CSCO",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "NOK",
+      "type": "COMPETES_WITH",
+      "to": "ANET",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "ERIC",
+      "type": "COMPETES_WITH",
+      "to": "NOK",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "ERIC",
+      "type": "COMPETES_WITH",
+      "to": "CSCO",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "CEG",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "type": "SUPPLIES_TO",
+      "to": "META",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "type": "SUPPLIES_TO",
+      "to": "GCP",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "type": "SUPPLIES_TO",
+      "to": "META",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "type": "SUPPLIES_TO",
+      "to": "DELL",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "VRT",
+      "type": "SUPPLIES_TO",
+      "to": "SMCI",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "ETN",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ETN",
+      "type": "SUPPLIES_TO",
+      "to": "GCP",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "ETN",
+      "type": "SUPPLIES_TO",
+      "to": "MSFT",
+      "weight": 0.25,
+      "source": "public"
+    },
+    {
+      "from": "GEV",
+      "type": "SUPPLIES_TO",
+      "to": "NRG",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "GEV",
+      "type": "SUPPLIES_TO",
+      "to": "VST",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "GEV",
+      "type": "SUPPLIES_TO",
+      "to": "CEG",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "GEV",
+      "type": "SUPPLIES_TO",
+      "to": "AWS",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "PWR",
+      "type": "SUPPLIES_TO",
+      "to": "VST",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "PWR",
+      "type": "SUPPLIES_TO",
+      "to": "CEG",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "PWR",
+      "type": "SUPPLIES_TO",
+      "to": "GEV",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "type": "COMPETES_WITH",
+      "to": "CEG",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "VST",
+      "type": "COMPETES_WITH",
+      "to": "NRG",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "CEG",
+      "type": "COMPETES_WITH",
+      "to": "NRG",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "ETN",
+      "type": "COMPETES_WITH",
+      "to": "VRT",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "RIVN",
+      "type": "COMPETES_WITH",
+      "to": "TSLA",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "RIVN",
+      "type": "COMPETES_WITH",
+      "to": "GM",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "F",
+      "type": "COMPETES_WITH",
+      "to": "GM",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "F",
+      "type": "COMPETES_WITH",
+      "to": "TSLA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TM",
+      "type": "COMPETES_WITH",
+      "to": "GM",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "VOW3",
+      "type": "COMPETES_WITH",
+      "to": "TSLA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "VOW3",
+      "type": "COMPETES_WITH",
+      "to": "BYD",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "NIO",
+      "type": "COMPETES_WITH",
+      "to": "BYD",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "NIO",
+      "type": "COMPETES_WITH",
+      "to": "LI",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "LI",
+      "type": "COMPETES_WITH",
+      "to": "TSLA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "SUPPLIES_TO",
+      "to": "GM",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "SUPPLIES_TO",
+      "to": "F",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "SUPPLIES_TO",
+      "to": "RIVN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "SUPPLIES_TO",
+      "to": "VOW3",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "type": "SUPPLIES_TO",
+      "to": "NIO",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "type": "SUPPLIES_TO",
+      "to": "LI",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "type": "SUPPLIES_TO",
+      "to": "F",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "CATL",
+      "type": "SUPPLIES_TO",
+      "to": "VOW3",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "PANA",
+      "type": "SUPPLIES_TO",
+      "to": "TM",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "COMPETES_WITH",
+      "to": "CATL",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "LGES",
+      "type": "COMPETES_WITH",
+      "to": "PANA",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ALB",
+      "type": "SUPPLIES_TO",
+      "to": "TSLA",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "QCOM",
+      "type": "SUPPLIES_TO",
+      "to": "F",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "QCOM",
+      "type": "SUPPLIES_TO",
+      "to": "VOW3",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "NVDA",
+      "type": "SUPPLIES_TO",
+      "to": "LI",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "F",
+      "type": "COMPETES_WITH",
+      "to": "TM",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "TEM",
+      "type": "PARTNERS_WITH",
+      "to": "RXRX",
+      "weight": 0.3,
+      "source": "public"
+    },
+    {
+      "from": "RXRX",
+      "type": "COMPETES_WITH",
+      "to": "SDGR",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "HANMI",
+      "type": "SUPPLIES_TO",
+      "to": "SKH",
+      "weight": 0.8,
+      "source": "public"
+    },
+    {
+      "from": "HANMI",
+      "type": "SUPPLIES_TO",
+      "to": "SMSN",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "BESI",
+      "type": "SUPPLIES_TO",
+      "to": "SKH",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "BESI",
+      "type": "SUPPLIES_TO",
+      "to": "TSMC",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "LRCX",
+      "type": "SUPPLIES_TO",
+      "to": "MU",
+      "weight": 0.55,
+      "source": "public"
+    },
+    {
+      "from": "LRCX",
+      "type": "SUPPLIES_TO",
+      "to": "SKH",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "AMAT",
+      "type": "SUPPLIES_TO",
+      "to": "MU",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "8035.T",
+      "type": "SUPPLIES_TO",
+      "to": "SKH",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "6857.T",
+      "type": "SUPPLIES_TO",
+      "to": "MU",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "ENTG",
+      "type": "SUPPLIES_TO",
+      "to": "SKH",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "BESI",
+      "type": "PARTNERS_WITH",
+      "to": "AMAT",
+      "weight": 0.6,
+      "source": "public"
+    },
+    {
+      "from": "SNDK",
+      "type": "COMPETES_WITH",
+      "to": "KIOXIA",
+      "weight": 0.7,
+      "source": "public"
+    },
+    {
+      "from": "SNDK",
+      "type": "COMPETES_WITH",
+      "to": "MU",
+      "weight": 0.45,
+      "source": "public"
+    },
+    {
+      "from": "NANYA",
+      "type": "COMPETES_WITH",
+      "to": "MU",
+      "weight": 0.5,
+      "source": "public"
+    },
+    {
+      "from": "NANYA",
+      "type": "COMPETES_WITH",
+      "to": "SKH",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "HANMI",
+      "type": "COMPETES_WITH",
+      "to": "BESI",
+      "weight": 0.4,
+      "source": "public"
+    },
+    {
+      "from": "MSFT",
+      "type": "SUPPLIES_TO",
+      "to": "MISTRAL",
+      "weight": 0.35,
+      "source": "public"
+    },
+    {
+      "from": "MISTRAL",
+      "type": "COMPETES_WITH",
+      "to": "OPENAI",
+      "weight": 0.5,
+      "source": "public"
+    }
+  ]
+}

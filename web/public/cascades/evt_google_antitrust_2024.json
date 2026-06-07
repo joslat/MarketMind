@@ -1,0 +1,265 @@
+{
+ "event": {
+  "id": "evt_google_antitrust_2024",
+  "headline": "US judge rules Google illegally monopolized online search",
+  "regime": "substitution",
+  "scope": "company",
+  "date": "2024-08-05",
+  "category": "regulatory",
+  "severity": 0.6,
+  "geo": {
+   "lat": 38.9,
+   "lng": -77.04,
+   "zone": "us_policy"
+  },
+  "split": "TRAIN"
+ },
+ "nodes": [
+  {
+   "id": "GOOGL",
+   "name": "Alphabet",
+   "sector": "internet",
+   "country": "US",
+   "lat": 37.42,
+   "lng": -122.08,
+   "tradable": true,
+   "impact": -0.6,
+   "band": "Severe",
+   "direction": "loss",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "GOOGL",
+   "actual": -3.0,
+   "actualDir": "loss",
+   "hit": true
+  },
+  {
+   "id": "GCP",
+   "name": "Google Cloud",
+   "sector": "cloud",
+   "country": "US",
+   "lat": 37.42,
+   "lng": -122.08,
+   "tradable": false,
+   "impact": -0.198,
+   "band": "Moderate",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "GOOGL —OWN→ GCP"
+  },
+  {
+   "id": "BIDU",
+   "name": "Baidu, Inc.",
+   "sector": "ai",
+   "country": "CN",
+   "lat": 39.98,
+   "lng": 116.3,
+   "tradable": true,
+   "impact": 0.063,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "GOOGL —CMP→ BIDU",
+   "actual": 0.27,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "MSFT",
+   "name": "Microsoft",
+   "sector": "cloud",
+   "country": "US",
+   "lat": 47.64,
+   "lng": -122.13,
+   "tradable": true,
+   "impact": 0.063,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "GOOGL —CMP→ MSFT",
+   "actual": -0.16,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "NAVER",
+   "name": "NAVER Corporation",
+   "sector": "internet",
+   "country": "KR",
+   "lat": 37.4,
+   "lng": 127.11,
+   "tradable": true,
+   "impact": 0.0504,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "GOOGL —CMP→ NAVER",
+   "actual": -1.83,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "COHERE",
+   "name": "Cohere",
+   "sector": "ai",
+   "country": "CA",
+   "lat": 43.65,
+   "lng": -79.38,
+   "tradable": false,
+   "impact": -0.0356,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "GOOGL —OWN→ GCP —SUP→ COHERE"
+  },
+  {
+   "id": "NVDA",
+   "name": "NVIDIA",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.37,
+   "lng": -121.97,
+   "tradable": true,
+   "impact": -0.0333,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "GOOGL —OWN→ GCP —SUP→ NVDA",
+   "actual": -0.8,
+   "actualDir": "loss",
+   "hit": true
+  }
+ ],
+ "links": [
+  {
+   "source": "NVDA",
+   "target": "MSFT",
+   "type": "SUPPLIES_TO",
+   "weight": 0.8,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0333,
+   "source_ref": "public"
+  },
+  {
+   "source": "NVDA",
+   "target": "GCP",
+   "type": "SUPPLIES_TO",
+   "weight": 0.7,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0333,
+   "source_ref": "public"
+  },
+  {
+   "source": "GCP",
+   "target": "COHERE",
+   "type": "SUPPLIES_TO",
+   "weight": 0.5,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0356,
+   "source_ref": "public"
+  },
+  {
+   "source": "GCP",
+   "target": "COHERE",
+   "type": "PARTNERS_WITH",
+   "weight": 0.45,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0356,
+   "source_ref": "public"
+  },
+  {
+   "source": "GOOGL",
+   "target": "GCP",
+   "type": "OWNS",
+   "weight": 100.0,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.198,
+   "source_ref": "public"
+  },
+  {
+   "source": "MSFT",
+   "target": "GOOGL",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.063,
+   "source_ref": "public"
+  },
+  {
+   "source": "BIDU",
+   "target": "GOOGL",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.063,
+   "source_ref": "public"
+  },
+  {
+   "source": "NVDA",
+   "target": "BIDU",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": -1,
+   "hop": 2,
+   "magnitude": 0.0333,
+   "source_ref": "public"
+  },
+  {
+   "source": "NAVER",
+   "target": "GOOGL",
+   "type": "COMPETES_WITH",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0504,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "GOOGL"
+  ],
+  [
+   "GCP",
+   "BIDU",
+   "MSFT",
+   "NAVER"
+  ],
+  [
+   "COHERE",
+   "NVDA"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "GOOGL",
+    "seed": -0.6
+   }
+  ],
+  "reached": 7,
+  "scored": 5
+ }
+}

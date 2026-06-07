@@ -1,0 +1,375 @@
+{
+ "event": {
+  "id": "evt_china_stimulus_2024",
+  "headline": "PBOC unveils sweeping monetary stimulus (rate and RRR cuts, property and equity support); Chinese equities and US-listed China names rally",
+  "regime": "contagion",
+  "scope": "company",
+  "date": "2024-09-24",
+  "category": "macro",
+  "severity": 0.65,
+  "geo": {
+   "lat": 39.9,
+   "lng": 116.4,
+   "zone": "china"
+  },
+  "split": "TEST"
+ },
+ "nodes": [
+  {
+   "id": "BABA",
+   "name": "Alibaba",
+   "sector": "internet",
+   "country": "CN",
+   "lat": 30.27,
+   "lng": 120.16,
+   "tradable": true,
+   "impact": 0.65,
+   "band": "Severe",
+   "direction": "gain",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "BABA",
+   "actual": 5.9,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "BYD",
+   "name": "BYD",
+   "sector": "automotive",
+   "country": "CN",
+   "lat": 22.65,
+   "lng": 114.02,
+   "tradable": true,
+   "impact": 0.4932,
+   "band": "High",
+   "direction": "gain",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "BYD",
+   "actual": -0.09,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "CATL",
+   "name": "CATL",
+   "sector": "automotive",
+   "country": "CN",
+   "lat": 26.67,
+   "lng": 119.55,
+   "tradable": true,
+   "impact": 0.4324,
+   "band": "High",
+   "direction": "gain",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "CATL",
+   "actual": 2.04,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "NIO",
+   "name": "NIO",
+   "sector": "automotive",
+   "country": "CN",
+   "lat": 31.23,
+   "lng": 121.47,
+   "tradable": true,
+   "impact": 0.1008,
+   "band": "Moderate",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "BYD —CMP→ NIO",
+   "actual": 6.14,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "TSLA",
+   "name": "Tesla",
+   "sector": "automotive",
+   "country": "US",
+   "lat": 30.22,
+   "lng": -97.62,
+   "tradable": true,
+   "impact": 0.0936,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "BYD —CMP→ TSLA",
+   "actual": 2.74,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "LI",
+   "name": "Li Auto",
+   "sector": "automotive",
+   "country": "CN",
+   "lat": 40.04,
+   "lng": 116.4,
+   "tradable": true,
+   "impact": 0.0864,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "CATL —SUP→ LI",
+   "actual": 7.01,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "F",
+   "name": "Ford Motor",
+   "sector": "automotive",
+   "country": "US",
+   "lat": 42.32,
+   "lng": -83.21,
+   "tradable": true,
+   "impact": 0.0576,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "CATL —SUP→ F",
+   "actual": -4.56,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "VOW3",
+   "name": "Volkswagen",
+   "sector": "automotive",
+   "country": "DE",
+   "lat": 51.1,
+   "lng": 10.4,
+   "tradable": true,
+   "impact": 0.0576,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "BYD —CMP→ VOW3",
+   "actual": -0.25,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "IFX.DE",
+   "name": "Infineon Technologies AG",
+   "sector": "semis",
+   "country": "DE",
+   "lat": 48.08,
+   "lng": 11.64,
+   "tradable": true,
+   "impact": 0.054,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "BYD —SUP→ IFX.DE",
+   "actual": 0.86,
+   "actualDir": "gain",
+   "hit": true
+  }
+ ],
+ "links": [
+  {
+   "source": "CATL",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.65,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0936,
+   "source_ref": "public"
+  },
+  {
+   "source": "CATL",
+   "target": "BYD",
+   "type": "SUPPLIES_TO",
+   "weight": 0.3,
+   "sign": 1,
+   "hop": 0,
+   "magnitude": 0.4932,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSLA",
+   "target": "BYD",
+   "type": "COMPETES_WITH",
+   "weight": 0.7,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0936,
+   "source_ref": "public"
+  },
+  {
+   "source": "IFX.DE",
+   "target": "TSLA",
+   "type": "SUPPLIES_TO",
+   "weight": 0.6,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0936,
+   "source_ref": "public"
+  },
+  {
+   "source": "IFX.DE",
+   "target": "BYD",
+   "type": "SUPPLIES_TO",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.054,
+   "source_ref": "public"
+  },
+  {
+   "source": "F",
+   "target": "TSLA",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0936,
+   "source_ref": "public"
+  },
+  {
+   "source": "VOW3",
+   "target": "TSLA",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0936,
+   "source_ref": "public"
+  },
+  {
+   "source": "VOW3",
+   "target": "BYD",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0576,
+   "source_ref": "public"
+  },
+  {
+   "source": "NIO",
+   "target": "BYD",
+   "type": "COMPETES_WITH",
+   "weight": 0.7,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.1008,
+   "source_ref": "public"
+  },
+  {
+   "source": "NIO",
+   "target": "LI",
+   "type": "COMPETES_WITH",
+   "weight": 0.7,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0864,
+   "source_ref": "public"
+  },
+  {
+   "source": "LI",
+   "target": "TSLA",
+   "type": "COMPETES_WITH",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0936,
+   "source_ref": "public"
+  },
+  {
+   "source": "CATL",
+   "target": "NIO",
+   "type": "SUPPLIES_TO",
+   "weight": 0.7,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.1008,
+   "source_ref": "public"
+  },
+  {
+   "source": "CATL",
+   "target": "LI",
+   "type": "SUPPLIES_TO",
+   "weight": 0.6,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0864,
+   "source_ref": "public"
+  },
+  {
+   "source": "CATL",
+   "target": "F",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0576,
+   "source_ref": "public"
+  },
+  {
+   "source": "CATL",
+   "target": "VOW3",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.0576,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "BABA",
+   "BYD",
+   "CATL"
+  ],
+  [
+   "NIO",
+   "TSLA",
+   "LI",
+   "F",
+   "VOW3",
+   "IFX.DE"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "BABA",
+    "seed": 0.65
+   },
+   {
+    "ticker": "BYD",
+    "seed": 0.45
+   },
+   {
+    "ticker": "CATL",
+    "seed": 0.4
+   }
+  ],
+  "reached": 9,
+  "scored": 9
+ }
+}

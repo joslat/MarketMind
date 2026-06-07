@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!--
+    MarketMind.Api — the backend service: a thin ASP.NET minimal API over IMarketMindBackend (the
+    deterministic cascade) + MarketMindAgent (the live MAF agent). Program.cs only composes; the DI
+    registration (MarketMindServices) and the routes (CascadeEndpoints) live in their own files.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\MarketMind.Engine\MarketMind.Engine.csproj" />
+    <ProjectReference Include="..\MarketMind.Backend\MarketMind.Backend.csproj" />
+    <ProjectReference Include="..\MarketMind.Agent\MarketMind.Agent.csproj" />
+  </ItemGroup>
+
+</Project>

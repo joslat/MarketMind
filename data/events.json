@@ -1,0 +1,724 @@
+{
+  "_meta": {
+    "license": "CC-BY-4.0",
+    "provenance": "Hand-curated from public sources (Wikidata, SEC EDGAR, company filings & investor materials), 2025-2026. Not Diffbot-derived; the curated compilation is licensed CC-BY-4.0.",
+    "description": "MarketMind news events — single source of truth (P1, §6.4). Edit here, then run tools/gen_seed.py. 'date' is the REACTION trading day (after-close news uses the next session); it is the day whose D-1..D+1 abnormal-return window we grade.",
+    "categories": [
+      "supply_chain_disruption",
+      "demand_surge",
+      "regulatory",
+      "earnings",
+      "macro",
+      "sector",
+      "geopolitical",
+      "election_policy",
+      "fx_monetary",
+      "commodity_shock",
+      "thematic"
+    ],
+    "regimeRule": "category in {macro, sector} OR >=2 directly-hit companies in the same sector => contagion (rivals fall too, inversion suppressed); else substitution (rivals benefit).",
+    "hit": {
+      "ticker": "directly-named company",
+      "sign": "+1 up / -1 down",
+      "severity": "0..1 magnitude of the direct shock",
+      "why": "one-line rationale"
+    },
+    "anchorIds": [
+      "evt_tsmc_quake_2024",
+      "evt_nvda_ai_surge_2024",
+      "evt_chip_export_curbs_2024"
+    ],
+    "dateNote": "All dates are US-market weekdays and not 2024 NYSE holidays; foreign names use local-benchmark abnormal returns (see companies.json)."
+  },
+  "events": [
+    {
+      "id": "evt_tsmc_quake_2024",
+      "headline": "Magnitude 7.4 earthquake hits Taiwan; TSMC halts production at multiple fabs",
+      "date": "2024-04-03",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/asia-pacific/taiwan-earthquake-2024-04-03/",
+      "category": "supply_chain_disruption",
+      "hits": [
+        {
+          "ticker": "TSMC",
+          "sign": -1,
+          "severity": 0.85,
+          "why": "Fabs evacuated and wafers in process scrapped; output disrupted"
+        }
+      ],
+      "geo": {
+        "lat": 23.83,
+        "lng": 121.55,
+        "zone": "east_asia_chip_belt"
+      }
+    },
+    {
+      "id": "evt_nvda_ai_surge_2024",
+      "headline": "NVIDIA posts record datacenter revenue as AI demand surges; shares jump",
+      "date": "2024-02-22",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/nvidia-q4-fy24-earnings-2024-02-21",
+      "category": "demand_surge",
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": 1,
+          "severity": 0.8,
+          "why": "Datacenter revenue blowout and strong guidance after Feb 21 close"
+        }
+      ]
+    },
+    {
+      "id": "evt_chip_export_curbs_2024",
+      "headline": "US tightens export controls on advanced chips and equipment to China",
+      "date": "2024-12-02",
+      "source": "WSJ",
+      "url": "https://www.wsj.com/tech/us-china-chip-export-controls-december-2024",
+      "category": "regulatory",
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": -1,
+          "severity": 0.55,
+          "why": "Tighter limits on advanced AI accelerator sales to China"
+        },
+        {
+          "ticker": "ASML",
+          "sign": -1,
+          "severity": 0.5,
+          "why": "Lithography tool shipments to Chinese fabs further restricted"
+        },
+        {
+          "ticker": "AMAT",
+          "sign": -1,
+          "severity": 0.45,
+          "why": "Deposition/etch equipment exports curbed"
+        },
+        {
+          "ticker": "LRCX",
+          "sign": -1,
+          "severity": 0.45,
+          "why": "Etch equipment exports to China curbed"
+        }
+      ],
+      "geo": {
+        "lat": 38.9,
+        "lng": -77.04,
+        "zone": "us_policy"
+      }
+    },
+    {
+      "id": "evt_tesla_q1_miss_2024",
+      "headline": "Tesla Q1 deliveries fall well short of estimates",
+      "date": "2024-04-02",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/04/02/tesla-tsla-q1-2024-vehicle-delivery-and-production-numbers.html",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "TSLA",
+          "sign": -1,
+          "severity": 0.6,
+          "why": "First YoY delivery decline in years; demand and price-cut worries"
+        }
+      ]
+    },
+    {
+      "id": "evt_byd_overtakes_tesla_2024",
+      "headline": "BYD overtakes Tesla as the world's top EV seller in Q4",
+      "date": "2024-01-02",
+      "source": "Financial Times",
+      "url": "https://www.ft.com/content/byd-tesla-ev-sales-q4-2023",
+      "category": "sector",
+      "hits": [
+        {
+          "ticker": "BYD",
+          "sign": 1,
+          "severity": 0.6,
+          "why": "Record quarterly BEV deliveries; took the global volume crown"
+        },
+        {
+          "ticker": "TSLA",
+          "sign": -1,
+          "severity": 0.45,
+          "why": "Lost the top-seller title; intensifying EV price war"
+        }
+      ]
+    },
+    {
+      "id": "evt_asml_guidance_cut_2024",
+      "headline": "ASML shares plunge after orders miss and outlook cut (early release)",
+      "date": "2024-10-15",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/asml-q3-2024-results-2024-10-15/",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "ASML",
+          "sign": -1,
+          "severity": 0.75,
+          "why": "Bookings far below consensus; 2025 sales guidance cut"
+        }
+      ]
+    },
+    {
+      "id": "evt_intel_q2_miss_2024",
+      "headline": "Intel plunges on weak guidance, dividend suspension and layoffs",
+      "date": "2024-08-02",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/intel-q2-2024-results-2024-08-01",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "INTC",
+          "sign": -1,
+          "severity": 0.7,
+          "why": "Guidance cut, dividend suspended, ~15% workforce reduction"
+        }
+      ]
+    },
+    {
+      "id": "evt_micron_beat_2024",
+      "headline": "Micron jumps on AI-driven memory demand and upbeat guidance",
+      "date": "2024-09-26",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/micron-fq4-2024-results-2024-09-25/",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "MU",
+          "sign": 1,
+          "severity": 0.65,
+          "why": "HBM/DRAM strength on AI; guidance above estimates after Sep 25 close"
+        }
+      ]
+    },
+    {
+      "id": "evt_google_antitrust_2024",
+      "headline": "US judge rules Google illegally monopolized online search",
+      "date": "2024-08-05",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/legal/google-antitrust-search-ruling-2024-08-05/",
+      "category": "regulatory",
+      "hits": [
+        {
+          "ticker": "GOOGL",
+          "sign": -1,
+          "severity": 0.6,
+          "why": "Landmark monopoly ruling; remedies and ad/search risk overhang"
+        }
+      ],
+      "geo": {
+        "lat": 38.9,
+        "lng": -77.04,
+        "zone": "us_policy"
+      }
+    },
+    {
+      "id": "evt_samsung_strike_2024",
+      "headline": "Samsung Electronics union stages first-ever strike",
+      "date": "2024-07-08",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/samsung-electronics-union-strike-2024-07-08/",
+      "category": "supply_chain_disruption",
+      "hits": [
+        {
+          "ticker": "SMSN",
+          "sign": -1,
+          "severity": 0.5,
+          "why": "Production/operational risk from indefinite walkout at chip lines"
+        }
+      ],
+      "geo": {
+        "lat": 37.26,
+        "lng": 127.03,
+        "zone": "east_asia_chip_belt"
+      }
+    },
+    {
+      "id": "evt_apple_intelligence_wwdc_2024",
+      "headline": "Apple unveils Apple Intelligence at WWDC; shares hit record high",
+      "date": "2024-06-11",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/06/11/apple-stock-record-high-after-wwdc-apple-intelligence.html",
+      "category": "demand_surge",
+      "hits": [
+        {
+          "ticker": "AAPL",
+          "sign": 1,
+          "severity": 0.6,
+          "why": "AI features seen driving an iPhone upgrade super-cycle"
+        }
+      ]
+    },
+    {
+      "id": "evt_nvda_blackwell_delay_2024",
+      "headline": "Report: NVIDIA's Blackwell AI GPUs delayed by a design flaw",
+      "date": "2024-08-05",
+      "source": "The Information",
+      "url": "https://www.theinformation.com/articles/nvidia-blackwell-delay-2024",
+      "category": "supply_chain_disruption",
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": -1,
+          "severity": 0.5,
+          "why": "Packaging design flaw reportedly pushes Blackwell ramp by months"
+        }
+      ]
+    },
+    {
+      "id": "evt_tsmc_earnings_beat_2024",
+      "headline": "TSMC posts record profit on AI chip demand and raises outlook",
+      "date": "2024-07-18",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/technology/tsmc-q2-2024-results-2024-07-18/",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "TSMC",
+          "sign": 1,
+          "severity": 0.7,
+          "why": "Profit beat and raised full-year revenue guidance on AI demand"
+        }
+      ]
+    },
+    {
+      "id": "evt_visa_doj_antitrust_2024",
+      "headline": "US DOJ sues Visa over alleged debit-network monopoly",
+      "date": "2024-09-24",
+      "source": "Reuters",
+      "url": "https://www.reuters.com/legal/doj-visa-debit-antitrust-lawsuit-2024-09-24/",
+      "category": "regulatory",
+      "hits": [
+        {
+          "ticker": "V",
+          "sign": -1,
+          "severity": 0.5,
+          "why": "Antitrust suit targets debit fees and exclusionary practices"
+        }
+      ],
+      "geo": {
+        "lat": 38.9,
+        "lng": -77.04,
+        "zone": "us_policy"
+      }
+    },
+    {
+      "id": "evt_fed_hawkish_dec_2024",
+      "headline": "Fed cuts but signals fewer 2025 cuts; stocks tumble broadly",
+      "date": "2024-12-18",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/fomc-december-2024-decision",
+      "category": "macro",
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "High-multiple growth names sold off on higher-for-longer rates"
+        },
+        {
+          "ticker": "JPM",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "Broad risk-off; rate-path repricing hit financials"
+        },
+        {
+          "ticker": "AAPL",
+          "sign": -1,
+          "severity": 0.35,
+          "why": "Mega-cap drawdown in a market-wide de-rating"
+        }
+      ],
+      "geo": {
+        "lat": 38.9,
+        "lng": -77.04,
+        "zone": "global"
+      }
+    },
+    {
+      "id": "evt_china_stimulus_2024",
+      "headline": "PBOC unveils sweeping monetary stimulus (rate and RRR cuts, property and equity support); Chinese equities and US-listed China names rally",
+      "date": "2024-09-24",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2024-09-24/china-cuts-key-rate-rrr-in-broad-stimulus-push",
+      "category": "macro",
+      "hits": [
+        {
+          "ticker": "BABA",
+          "sign": 1,
+          "severity": 0.65,
+          "why": "US-listed China internet bellwether jumped on the stimulus-driven China re-rating"
+        },
+        {
+          "ticker": "BYD",
+          "sign": 1,
+          "severity": 0.45,
+          "why": "Hong Kong-listed China consumer/auto name lifted by broad China risk-on"
+        },
+        {
+          "ticker": "CATL",
+          "sign": 1,
+          "severity": 0.4,
+          "why": "A-share battery leader rallied with the onshore CSI 300 stimulus surge"
+        }
+      ],
+      "geo": {
+        "lat": 39.9,
+        "lng": 116.4,
+        "zone": "china"
+      }
+    },
+    {
+      "id": "evt_yen_carry_unwind_2024",
+      "headline": "Global risk-off as yen carry trade unwinds after BoJ hike and weak US jobs; Nikkei plunges ~12%, Nasdaq sells off hard",
+      "date": "2024-08-05",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/08/05/carry-trades-a-major-unwinding-is-underway-amid-a-stock-sell-off.html",
+      "category": "macro",
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": -1,
+          "severity": 0.55,
+          "why": "High-beta AI leader fell hard in the broad megacap-tech selloff"
+        },
+        {
+          "ticker": "AAPL",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "Dropped amid risk-off plus Berkshire stake-cut news"
+        },
+        {
+          "ticker": "SMCI",
+          "sign": -1,
+          "severity": 0.6,
+          "why": "Highest-beta AI hardware name fell sharply in the deleveraging"
+        },
+        {
+          "ticker": "PANA",
+          "sign": -1,
+          "severity": 0.55,
+          "why": "Japanese name slammed as Nikkei 225 fell ~12% on the yen surge"
+        }
+      ],
+      "geo": {
+        "lat": 35.68,
+        "lng": 139.76,
+        "zone": "global"
+      }
+    },
+    {
+      "id": "evt_deepseek_selloff_2025",
+      "headline": "China's DeepSeek low-cost AI model triggers record tech rout; NVIDIA sheds ~$589B, worst single-day market-cap loss in history",
+      "date": "2025-01-27",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2025-01-27/asml-sinks-as-china-ai-startup-triggers-panic-in-tech-stocks",
+      "category": "sector",
+      "hits": [],
+      "scope": "macro",
+      "seeds": [
+        {
+          "type": "theme",
+          "id": "AI-capex",
+          "sign": -1,
+          "severity": 0.8,
+          "why": "Cheap-compute (DeepSeek R1) shock undercuts the high-AI-capex thesis; seeds every AI-capex-loaded name negative by loading. Re-wired as a macro/theme shock so reach is earned by theme membership, not LLM memory."
+        }
+      ],
+      "channelVector": {
+        "operations": 0,
+        "demand": 0.2,
+        "currency": 0,
+        "policy": 0
+      },
+      "geo": {
+        "lat": 30.27,
+        "lng": 120.16,
+        "zone": "global"
+      }
+    },
+    {
+      "id": "evt_broadcom_ai_beat_2024",
+      "headline": "Broadcom guides to a $60-90B AI chip opportunity by 2027 and signs new custom-AI customers; stock rockets ~24% to a $1T market cap",
+      "date": "2024-12-13",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/12/13/broadcom-stock-jumps-21percent-pushing-company-past-1-trillion-market-cap-for-the-first-time.html",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "AVGO",
+          "sign": 1,
+          "severity": 0.85,
+          "why": "Surged ~24% on a massive AI custom-silicon TAM and new hyperscaler customers"
+        },
+        {
+          "ticker": "MRVL",
+          "sign": 1,
+          "severity": 0.45,
+          "why": "Custom-AI-silicon peer rallied in sympathy on the AVGO readthrough"
+        }
+      ]
+    },
+    {
+      "id": "evt_smci_auditor_resign_2024",
+      "headline": "Super Micro plunges after auditor Ernst & Young resigns citing inability to rely on management representations",
+      "date": "2024-10-30",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/10/30/super-micro-auditor-resigns-after-raising-concerns-months-earlier.html",
+      "category": "regulatory",
+      "hits": [
+        {
+          "ticker": "SMCI",
+          "sign": -1,
+          "severity": 0.85,
+          "why": "Crashed ~32% on the auditor-resignation disclosure and escalating accounting/governance crisis"
+        }
+      ]
+    },
+    {
+      "id": "evt_skhynix_record_q3_2024",
+      "headline": "SK hynix posts record Q3 profit on explosive HBM/AI-memory demand; shares jump to a record",
+      "date": "2024-10-24",
+      "source": "The Korea Herald",
+      "url": "https://www.koreaherald.com/article/10604199",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "SKH",
+          "sign": 1,
+          "severity": 0.65,
+          "why": "Record operating profit (W7.03tn, 40% margin) on HBM/AI demand; stock rose to a record"
+        },
+        {
+          "ticker": "SMSN",
+          "sign": 1,
+          "severity": 0.3,
+          "why": "Korean memory peer lifted modestly by the bullish HBM/DRAM readthrough"
+        }
+      ]
+    },
+    {
+      "id": "evt_marvell_ai_beat_2024",
+      "headline": "Marvell beats on AI-driven data-center revenue, raises outlook and expands a multi-year AWS custom-silicon partnership; shares hit a record high",
+      "date": "2024-12-04",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2024-12-03/marvell-rallies-after-demand-for-ai-computing-bolsters-outlook",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "MRVL",
+          "sign": 1,
+          "severity": 0.75,
+          "why": "Jumped ~23% to an all-time high on AI custom-silicon strength and the expanded AWS deal"
+        }
+      ]
+    },
+    {
+      "id": "evt_apple_iphone16_demand_2024",
+      "headline": "Apple slides as analysts flag weak early iPhone 16 demand with Apple Intelligence absent at launch",
+      "date": "2024-09-16",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/09/16/apple-shares-slide-on-lower-than-expected-iphone-16-demand-analysts.html",
+      "category": "earnings",
+      "hits": [
+        {
+          "ticker": "AAPL",
+          "sign": -1,
+          "severity": 0.45,
+          "why": "Fell ~2.8% on reports of soft iPhone 16 first-weekend/pre-order demand (Kuo: -12% y/y; Barclays/Citi corroborate)"
+        }
+      ]
+    },
+    {
+      "id": "evt_nvda_gtc_blackwell_2024",
+      "headline": "NVIDIA launches the Blackwell GPU platform at GTC 2024",
+      "date": "2024-03-19",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2024/03/19/nvidia-stock-dips-after-company-unveils-latest-ai-chips.html",
+      "category": "sector",
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": 1,
+          "severity": 0.25,
+          "why": "Flagship next-gen AI GPU launch; reaction muted 'sell-the-news' -- NVDA closed up ~1% the session after the keynote"
+        },
+        {
+          "ticker": "TSMC",
+          "sign": 1,
+          "severity": 0.2,
+          "why": "Sole leading-edge/CoWoS manufacturer of Blackwell; positive readthrough"
+        },
+        {
+          "ticker": "SKH",
+          "sign": 1,
+          "severity": 0.2,
+          "why": "Primary HBM supplier for Blackwell; positive demand readthrough"
+        }
+      ]
+    },
+    {
+      "id": "evt_taiwan_strait_scare_2022",
+      "headline": "China threatens 'strong countermeasures' over imminent Pelosi Taiwan visit; chip stocks and TAIEX slide on Taiwan-Strait conflict fears",
+      "date": "2022-08-01",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2022-08-02/taiwan-stocks-decline-as-us-china-tensions-sap-risk-appetite",
+      "category": "geopolitical",
+      "scope": "country",
+      "channelVector": {
+        "operations": 0.75,
+        "demand": 0.1,
+        "currency": 0.1,
+        "policy": 0.05
+      },
+      "seeds": [
+        {
+          "type": "country",
+          "id": "TW",
+          "sign": -1,
+          "severity": 0.5,
+          "why": "Conflict/blockade scare raises Taiwan operations risk; TAIEX fell >2% and TSMC ~2.4-3% as Pelosi visit and China's threatened military response loomed. Operations-dominant: hits names with Taiwan fabs/assembly. (Honest note: the Aug-4/5 live-fire drills were actually shrugged off and TAIEX rebounded +2.3%; 2022-08-01 is the genuine down reaction day for the scare.)"
+        }
+      ],
+      "hits": [
+        {
+          "ticker": "TSMC",
+          "sign": -1,
+          "severity": 0.45,
+          "why": "World's critical leading-edge fabs concentrated in Taiwan; fell ~2.4-3% on Taiwan-Strait conflict/blockade fear"
+        },
+        {
+          "ticker": "FOXCONN",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "Taiwan-domiciled assembly giant directly exposed to Taiwan operations/territorial risk"
+        },
+        {
+          "ticker": "NANYA",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "Taiwan-based DRAM maker hit by island operations-risk repricing"
+        },
+        {
+          "ticker": "NVDA",
+          "sign": -1,
+          "severity": 0.25,
+          "why": "Single-source dependence on TSMC Taiwan fabs; supply-continuity fear read through to fabless leaders"
+        },
+        {
+          "ticker": "AMD",
+          "sign": -1,
+          "severity": 0.2,
+          "why": "Also fully reliant on TSMC Taiwan capacity; contagion via shared single-point-of-failure"
+        }
+      ],
+      "geo": {
+        "lat": 24.5,
+        "lng": 119.5,
+        "zone": "taiwan_strait"
+      }
+    },
+    {
+      "id": "evt_chip_controls_tighten_2023",
+      "headline": "US tightens China chip export controls, banning Nvidia A800/H800 and more AI/WFE exports to close 2022-rule loopholes",
+      "date": "2023-10-17",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2023/10/17/us-bans-export-of-more-ai-chips-including-nvidia-h800-to-china.html",
+      "category": "election_policy",
+      "scope": "policy",
+      "channelVector": {
+        "operations": 0.05,
+        "demand": 0.15,
+        "currency": 0,
+        "policy": 0.8
+      },
+      "seeds": [
+        {
+          "type": "condition",
+          "id": "cond_us_china_chip_controls",
+          "conditionAction": "TIGHTENS",
+          "sign": -1,
+          "severity": 0.55,
+          "why": "BIS update bans A800/H800/L40/RTX4090-class AI chips and broadens WFE curbs; tightening seeds every CONSTRAINS target with its sign (US/EU/JP chip+WFE exporters down, Chinese domestic foundries up via forced localization)"
+        }
+      ],
+      "hits": [
+        {
+          "ticker": "NVDA",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "A800/H800 China workaround SKUs banned; near-term China datacenter-GPU revenue cut off"
+        },
+        {
+          "ticker": "AMD",
+          "sign": -1,
+          "severity": 0.3,
+          "why": "MI-series China AI sales restricted under the broadened thresholds"
+        },
+        {
+          "ticker": "SMIC",
+          "sign": 1,
+          "severity": 0.25,
+          "why": "Chinese customers further forced toward domestic foundries; self-sufficiency bid"
+        }
+      ],
+      "geo": {
+        "lat": 38.9,
+        "lng": -77.04,
+        "zone": "us_policy"
+      }
+    },
+    {
+      "id": "evt_us_election_trump_2024",
+      "headline": "Trump wins 2024 US election; stocks rally on tax/deregulation hopes while tariff and China-trade-war fears hit China-exposed names",
+      "date": "2024-11-06",
+      "source": "Bloomberg",
+      "url": "https://www.bloomberg.com/news/articles/2024-11-06/stock-market-today-trump-trade-dollar-surges",
+      "category": "election_policy",
+      "scope": "policy",
+      "channelVector": {
+        "operations": 0.05,
+        "demand": 0.1,
+        "currency": 0.35,
+        "policy": 0.5
+      },
+      "seeds": [
+        {
+          "type": "condition",
+          "id": "cond_us_china_tariffs",
+          "conditionAction": "TIGHTENS",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "Election outcome re-prices an expanded China-tariff / trade-war stance; seeds tariff CONSTRAINS targets (China exporters and China-supply-chain names) negative"
+        }
+      ],
+      "hits": [
+        {
+          "ticker": "TSLA",
+          "sign": 1,
+          "severity": 0.6,
+          "why": "Musk-Trump alignment + EV/regulatory tailwind hopes; Tesla surged ~15% the day after the election"
+        },
+        {
+          "ticker": "BABA",
+          "sign": -1,
+          "severity": 0.4,
+          "why": "US-listed China name fell on renewed tariff / trade-war threat under the new administration"
+        },
+        {
+          "ticker": "JPM",
+          "sign": 1,
+          "severity": 0.35,
+          "why": "Banks rallied on deregulation and steeper-curve / stronger-dollar reflation trade"
+        }
+      ],
+      "geo": {
+        "lat": 38.9,
+        "lng": -77.04,
+        "zone": "us_policy"
+      }
+    }
+  ]
+}

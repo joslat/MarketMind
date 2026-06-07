@@ -1,0 +1,239 @@
+{
+ "event": {
+  "id": "evt_marvell_ai_beat_2024",
+  "headline": "Marvell beats on AI-driven data-center revenue, raises outlook and expands a multi-year AWS custom-silicon partnership; shares hit a record high",
+  "regime": "substitution",
+  "scope": "company",
+  "date": "2024-12-04",
+  "category": "earnings",
+  "severity": 0.75,
+  "geo": {
+   "lat": 37.39,
+   "lng": -121.97,
+   "zone": "US"
+  },
+  "split": "TEST"
+ },
+ "nodes": [
+  {
+   "id": "MRVL",
+   "name": "Marvell Technology",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.39,
+   "lng": -121.97,
+   "tradable": true,
+   "impact": 0.75,
+   "band": "Severe",
+   "direction": "gain",
+   "hop": 0,
+   "confidence": 1.0,
+   "path": "MRVL",
+   "actual": 17.75,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "CDNS",
+   "name": "Cadence Design Systems",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.3,
+   "lng": -121.95,
+   "tradable": true,
+   "impact": 0.108,
+   "band": "Moderate",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "MRVL —SUP→ CDNS",
+   "actual": -3.48,
+   "actualDir": "loss",
+   "hit": false
+  },
+  {
+   "id": "AWS",
+   "name": "Amazon Web Services",
+   "sector": "cloud",
+   "country": "US",
+   "lat": 47.62,
+   "lng": -122.34,
+   "tradable": false,
+   "impact": 0.108,
+   "band": "Moderate",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "MRVL —SUP→ AWS"
+  },
+  {
+   "id": "AVGO",
+   "name": "Broadcom",
+   "sector": "semis",
+   "country": "US",
+   "lat": 37.42,
+   "lng": -122.14,
+   "tradable": true,
+   "impact": -0.0945,
+   "band": "Marginal",
+   "direction": "loss",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "MRVL —CMP→ AVGO",
+   "actual": 0.92,
+   "actualDir": "gain",
+   "hit": false
+  },
+  {
+   "id": "TSMC",
+   "name": "TSMC",
+   "sector": "semis",
+   "country": "TW",
+   "lat": 24.77,
+   "lng": 121.01,
+   "tradable": true,
+   "impact": 0.09,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 1,
+   "confidence": 0.75,
+   "path": "MRVL —SUP→ TSMC",
+   "actual": 2.26,
+   "actualDir": "gain",
+   "hit": true
+  },
+  {
+   "id": "AMZN",
+   "name": "Amazon",
+   "sector": "internet",
+   "country": "US",
+   "lat": 47.62,
+   "lng": -122.34,
+   "tradable": true,
+   "impact": 0.0356,
+   "band": "Marginal",
+   "direction": "gain",
+   "hop": 2,
+   "confidence": 0.5,
+   "path": "MRVL —SUP→ AWS —OWN→ AMZN",
+   "actual": 2.88,
+   "actualDir": "gain",
+   "hit": true
+  }
+ ],
+ "links": [
+  {
+   "source": "AVGO",
+   "target": "AWS",
+   "type": "SUPPLIES_TO",
+   "weight": 0.45,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.108,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSMC",
+   "target": "AVGO",
+   "type": "SUPPLIES_TO",
+   "weight": 0.5,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0945,
+   "source_ref": "public"
+  },
+  {
+   "source": "TSMC",
+   "target": "MRVL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.09,
+   "source_ref": "public"
+  },
+  {
+   "source": "MRVL",
+   "target": "AWS",
+   "type": "SUPPLIES_TO",
+   "weight": 0.4,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.108,
+   "source_ref": "public"
+  },
+  {
+   "source": "AMZN",
+   "target": "AWS",
+   "type": "OWNS",
+   "weight": 100.0,
+   "sign": 1,
+   "hop": 2,
+   "magnitude": 0.0356,
+   "source_ref": "public"
+  },
+  {
+   "source": "MRVL",
+   "target": "AVGO",
+   "type": "COMPETES_WITH",
+   "weight": 0.6,
+   "sign": -1,
+   "hop": 1,
+   "magnitude": 0.0945,
+   "source_ref": "public"
+  },
+  {
+   "source": "CDNS",
+   "target": "MRVL",
+   "type": "SUPPLIES_TO",
+   "weight": 0.6,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.108,
+   "source_ref": "public"
+  },
+  {
+   "source": "CDNS",
+   "target": "TSMC",
+   "type": "SUPPLIES_TO",
+   "weight": 0.5,
+   "sign": 1,
+   "hop": 1,
+   "magnitude": 0.09,
+   "source_ref": "public"
+  }
+ ],
+ "hops": [
+  [
+   "MRVL"
+  ],
+  [
+   "CDNS",
+   "AWS",
+   "AVGO",
+   "TSMC"
+  ],
+  [
+   "AMZN"
+  ]
+ ],
+ "meta": {
+  "weights": {
+   "fSupDown": 0.6,
+   "fSupUp": 0.4,
+   "fPar": 0.5,
+   "fOwn": 0.55,
+   "fCmp": 0.35,
+   "hopDecay": 0.6,
+   "minImpact": 0.03
+  },
+  "seeds": [
+   {
+    "ticker": "MRVL",
+    "seed": 0.75
+   }
+  ],
+  "reached": 6,
+  "scored": 5
+ }
+}
